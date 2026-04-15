@@ -36,8 +36,6 @@ My personal project for COGS300
 >*Figure 1: The 'Pitches and Sketches' Diagram that I showed Paul*
 
 
-
-
 ### How a Perceptron Relates to a Biological Neuron
 >
 >The perceptron is directly inspired by the structure of a biological neuron.
@@ -52,23 +50,47 @@ My personal project for COGS300
 >| Action potential (fires or doesn't)        | LED lights (green = fires, blue = doesn't) |
 >| Axon → next neuron                         | Output wire → next circuit stage           |
 >| Synaptic plasticity (learning)             | Turning the potentiometer dials by hand    |
+>*Figure 2: A table showing the comparison between a biological neuron and an analog perceptron*
 >
-When multiple perceptrons are combined—with the output of one feeding the inputs of others—you get a multi-layer neural network, capable of solving problems no single perceptron can. This is the architecture shown in the upper-left part of my notebook sketch (the multi-layer diagram with attention mechanisms), and the direction I intend for this project. 
+>When multiple perceptrons are combined—with the output of one feeding the inputs of others—you get a multi-layer neural network, capable of solving problems no single perceptron can. This is the architecture shown in the upper-left part of my notebook sketch (the multi-layer diagram with attention mechanisms), and the direction I intended for this project. 
+>
+><img width="571" height="428" alt="Image from iLoveIMG" src="https://github.com/user-attachments/assets/e56e0793-2e38-409e-9bd8-60845f1fdf12" />
+>
+>*Figure 3: My perceptron prototype theory on paper*
+>
+>My first iterations of this were on a cardboard box (as my base) with physical components that I planned to use further down the line (perceptron, switches, etc.)
+> If you'd like to watch a video: https://drive.google.com/file/d/1gP8iWLKEKyuuV7yGvbxWcRd90X-XedA8/view
+>
+><img width="387" height="254" alt="BIG IMAGE" src="https://github.com/user-attachments/assets/a0f5ca0f-d4e3-4756-9257-ea23c33b1a83" />
+>
+>*Figure 4: My actual work-like perceptron paper prototype*
+>
+><img width="360" height="218" alt="Screenshot 2026-04-15 at 2 39 56 AM" src="https://github.com/user-attachments/assets/b2ca9573-be8e-407c-a2b5-5d4dc9c7fdf9" />
+> Figure 4: Image of my Piazza post sharing the math behind the first layer of my neural network
 
-// NEXT IMAGE
-
-Figure 2: My full prototype, written portion...
-
-Figure 3: a box of my protoype
-
-My first iterations of this were a cardboard box with drawings, and the actual materials that I initially thought I'd be using. 
 
 
-If you'd like to watch a video: https://drive.google.com/file/d/1gP8iWLKEKyuuV7yGvbxWcRd90X-XedA8/view 
 
-<img width="1080" height="653" alt="Screenshot 2026-04-15 at 2 39 56 AM" src="https://github.com/user-attachments/assets/b2ca9573-be8e-407c-a2b5-5d4dc9c7fdf9" />
 
-Figure 4: Image of Piazza post sharing initial plans for what used to be a Neural Network (way
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
