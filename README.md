@@ -32,9 +32,8 @@ My personal project for COGS300
 >
 >
 ><img width="455" height="251" alt="IMG 5848" src="https://github.com/user-attachments/assets/f3172926-0194-439d-9ac6-701db2fa5c55" />
-
+>
 >*Figure 1 The 'Pitches and Sketches' Diagram that I showed Paul*
->*trying out text*
 
 
 *trying out text*
