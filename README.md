@@ -33,27 +33,26 @@ My personal project for COGS300
 >
 ><img width="455" height="251" alt="IMG 5848" src="https://github.com/user-attachments/assets/f3172926-0194-439d-9ac6-701db2fa5c55" />
 >
->*Figure 1 The 'Pitches and Sketches' Diagram that I showed Paul*
+>*Figure 1: The 'Pitches and Sketches' Diagram that I showed Paul*
 
 
-*trying out text*
 
 
-How a Perceptron Relates to a Biological Neuron
-
-The perceptron is directly inspired by the structure of a biological neuron.
-
-In the brain, a neuron receives signals through its dendrites, integrates them in the cell body (soma), and—if the total signal crosses a threshold—fires an electrical spike down the axon, across the synaptic cleft, to the dendrites of the next neuron.
-
-| Biological Neuron                          | Analog Perceptron                          |
-| ------------------------------------------ | ------------------------------------------ |
-| Dendrites receiving signals                | DIP switch inputs x₁, x₂                   |
-| Synapse strength                           | Potentiometer dial position (w₁, w₂)       |
-| Axon hillock — summation + threshold check | TL074 op-amp summing node + comparator     |
-| Action potential (fires or doesn't)        | LED lights (green = fires, blue = doesn't) |
-| Axon → next neuron                         | Output wire → next circuit stage           |
-| Synaptic plasticity (learning)             | Turning the potentiometer dials by hand    |
-
+### How a Perceptron Relates to a Biological Neuron
+>
+>The perceptron is directly inspired by the structure of a biological neuron.
+>
+>In the brain, a neuron receives signals through its dendrites, integrates them in the cell body (soma), and—if the total signal crosses a threshold—fires an electrical spike down the axon, across the synaptic cleft, to the dendrites of the next neuron.
+>
+>| Biological Neuron                          | Analog Perceptron                          |
+>| ------------------------------------------ | ------------------------------------------ |
+>| Dendrites receiving signals                | DIP switch inputs x₁, x₂                   |
+>| Synapse strength                           | Potentiometer dial position (w₁, w₂)       |
+>| Axon hillock — summation + threshold check | TL074 op-amp summing node + comparator     |
+>| Action potential (fires or doesn't)        | LED lights (green = fires, blue = doesn't) |
+>| Axon → next neuron                         | Output wire → next circuit stage           |
+>| Synaptic plasticity (learning)             | Turning the potentiometer dials by hand    |
+>
 When multiple perceptrons are combined—with the output of one feeding the inputs of others—you get a multi-layer neural network, capable of solving problems no single perceptron can. This is the architecture shown in the upper-left part of my notebook sketch (the multi-layer diagram with attention mechanisms), and the direction I intend for this project. 
 
 // NEXT IMAGE
