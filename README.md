@@ -27,10 +27,10 @@ Perceptron Breakdown
 - xx
 - xx
 
-Progress Report/chalenges/mistakes
+Conclusion
+- Progress Report/chalenges/mistakes
 - STRUGGLED WITH getting the summation to actually do what it needed to do 
 
-Conclusion
 
 
 
@@ -94,32 +94,95 @@ Now for the part that you've been waiting for (drumroll please)... Before that t
 ### What Is a Perceptron?
 > A perceptron is the simplest possible form of an artificial neural network. The main idea was conceived by Frank Rosenblatt in 1957; it's the fundamental building block from which every modern deep learning model—GPT, Claude, AlphaFold—ultimately descends.
 >
-> At its core, a perceptron does three things:
+> **At its core, a perceptron does three things:**
 > * Takes multiple inputs and assigns each a numerical weight
 > * Computes a weighted sum of those inputs plus a constant bias term
 > * Applies a threshold (activation) function — outputs 1 if the sum exceeds the threshold, 0 (or -1) if it does not
 >   
 > Mathematically, the output is: ŷ = $\sum_{i=1}^{n}(w₁x₁ + w₂x₂ + b)$
 >
-> Where:
-> * x₁, x₂ are the binary inputs (switches: ON = 1, OFF = 0 || (-1))
-> * w₁, w₂ are the weights (set by the potentiometers)
-> * b is the bias (a constant offset that shifts the decision boundary)
-> * $\sum_{i=1}^{n} ()$ is the activation function — positive sum → Class A, a zero, or negative sum → Class B
+> **Where:**
+> * $x₁, x₂$ are the binary inputs (switches: ON = 1, OFF = 0 || (-1))
+> * $w₁, w₂$ are the weights (set by the potentiometers)
+> * $b$ is the bias (a constant offset that shifts the decision boundary)
+> * $\sum_{i=1}^{n} ()$ is the activation function - positive sum → Class A, a zero, or negative sum → Class B
 > 
-> The perceptron is a binary linear classifier. Geometrically, the equation w₁x₁ + w₂x₂ + b = 0 defines a straight line in 2D space. Everything on one side of that line is Class A; everything on the other is Class B. Training the perceptron means adjusting w₁, w₂, and b until that line correctly separates all your training examples.[^1] [GeeksForGeeks: What Is a Perceptron?] (HAVE // THIS BE A LINK TO THE BOTTOM)
+> The perceptron is a binary linear classifier. Geometrically, the equation $w₁x₁ + w₂x₂ + b = 0$ defines a straight line in 2D space. Everything on one side of that line is Class A; everything on the other is Class B. Training the perceptron means adjusting $w₁, w₂$, and $b$ until that line correctly separates all your training examples.[^1] [GeeksForGeeks: What Is a Perceptron?] (HAVE // THIS BE A LINK TO THE BOTTOM)
 >
 > <img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/075e5531-0592-40f9-9329-bc18fefd3d61" />
 >
-> *Figure 6: GeeksForGeeks — Perceptron diagram illustrating weighted inputs, summation, and activation function*
+> *Figure 6: GeeksForGeeks - Perceptron diagram illustrating weighted inputs, summation, and activation function*
 > 
 
 
+### Processing Visualization (Generation Aided by Claude)
+> To make the internal behavior of the circuit visible and legible for a presentation audience, a companion Processing sketch was developed (heavily assisted by Cluade) that communicates with an Arduino over serial. **This can be found as one of the files within the repo.**
+> **The Arduino reads:**
+> * The voltage at the summing node (Row S) via an analog input pin
+> * The state of the two DIP switch inputs
+> * It then streams this data as CSV over serial $(x1, x2, v_sum)$ to a Processing sketch running on a connected laptop
+>   
+> **The Processing visualization displays:**
+> * A real-time dial/gauge showing the current value of V_sum — styled with a CRT aesthetic, sweeping left to right as you turn the potentiometer knobs. This makes the summation visible in a way that a multimeter alone cannot convey to an audience watching from a distance.
+> * A 2D decision boundary plot showing the current classification line $w₁x₁ + w₂x₂ + b = 0$, updating live as the pots are turned
+> * LED indicators mirroring the physical LEDs, so the audience can see the binary output clearly on-screen
+> * The current values of $w₁, w₂$, and $b$ displayed numerically as the knobs are adjusted
+> This visualization transforms the physical circuit from a black box into a transparent, live-updating window into the perceptron's decision-making process, which is directly relevant to my interest in interpretable AI systems. ***Voltage safety note** if you're interested in replicating: The Arduino's analog inputs operate at 5V maximum. The op-amp summing output (0–9V) was stepped down via a 2:1 voltage divider (two equal resistors) before entering the analog pin. This prevents damage to the Arduino.*
 
+
+###Jupyter Notebook — Software Perceptron
+> To deepen my understanding of the perceptron learning algorithm and go beyond what a physical single-layer analog circuit can do, a software implementation was built in JupyterLab, copying an YouTube demonstration by ethicalPap's Perceptron Algorithm Learning series.^2
+> 
+> **The notebook implements:**
+> * The perceptron learning rule from scratch in Python (no ML libraries)
+> * Visualization of the decision boundary updating over training epochs
+> * Training on the AND, OR, and NAND logic gate problems
+> * A demonstration of why XOR fails (not linearly separable) — the motivation for multi-layer networks
+> * 
+
+
+###Limitations — Why XOR Is Impossible Here
+> The fundamental limitation of a single-layer perceptron is that it can only solve linearly separable problems; problems where a single straight line can divide Class A from Class B. The XOR problem is the canonical example of a problem that is not linearly separable:
+>
+>
+>| $x₁$ | $x₂$ | XOR output |
+>| ---- | ---- | ---------- |
+>| 0    | 0    | 0          |
+>| 0    | 1    | 1          |
+>| 1    | 0    | 1          |
+>| 1    | 1    | 0          |
+>
+> No single straight line can separate the 1 outputs from the 0 outputs, as they form an alternating checkerboard pattern. This is why XOR was the problem that broke the first perceptron hype cycle in the 1960s (Minsky & Papert, 1969).^3
+The solution is multiple layers (the multi-layer perceptron (MLP) shown in the upper-right of my original notebook sketch; figure 3). With a hidden layer, the network can learn non-linear boundaries by combining multiple linear decisions. This is the architecture behind every modern deep learning model, and the direction this project is intended to grow. My goal is to work on ensuring that my 'hidden layer' is still interpretable, and understanding the concepts within this project has gone a long way towards ensuring that.
+
+
+
+
+References & Citations
+
+Source	Used For
+Wikipedia — Perceptron	Definition of perceptron, historical context, learning rule
+GeeksForGeeks — What Is a Perceptron?	Perceptron diagram, binary classification overview
+ethicalPap — Machine Learning 101, Lecture 2: Perceptron Algorithm	Base implementation for the Jupyter software perceptron
+Rohm Semiconductor — BA10324A Datasheet	Op-amp pinout and electrical characteristics
+Texas Instruments — TL074 Datasheet	Quad op-amp pinout, comparator configuration
+Minsky, M. & Papert, S. (1969). Perceptrons. MIT Press.	XOR limitation, historical context of single-layer limits
+Rosenblatt, F. (1958). The Perceptron: A probabilistic model for information storage and organization in the brain. Psychological Review, 65(6), 386–408.	Original perceptron paper
+
+
+[Text to display](https://www.example.com)
 
 
 This is a claim that needs a citation.[^1]
 Another sentence with a different source.[^2]
 
+
 [^1]: Smith, J. (2023). *Title of Work*.
 [^2]: Doe, A. (2024). "Journal Article Name."
+
+
+
+
+
+
+
