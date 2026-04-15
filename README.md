@@ -20,7 +20,7 @@ My personal project for COGS300
 
 
 
-# Why I Built This
+### Why I Built This
 >
 > Hi, my name is Ridhwan! This was my final project (a perceptron) for COGS 300: Understanding and Designing Cognitive Systems, a course at UBC, where we built autonomous maze-solving robots and learned about machine learning (ML) topics for designing intelligent systems. 
 
