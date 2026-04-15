@@ -18,6 +18,22 @@ My personal project for COGS300
 13. Reflections
 14. References & Citations
 
+Introduction and Background
+- Why I built this
+- How perceptron relates to physical neuron
+
+Perceptron Breakdown
+- xx
+- xx
+- xx
+
+Progress Report/chalenges/mistakes
+- STRUGGLED WITH getting the summation to actually do what it needed to do 
+
+Conclusion
+
+
+
 
 
 ### Why I Built This
@@ -59,71 +75,51 @@ My personal project for COGS300
 >
 >*Figure 3: My perceptron prototype theory on paper*
 >
->My first iterations of this were on a cardboard box (as my base) with physical components that I planned to use further down the line (perceptron, switches, etc.)
-> If you'd like to watch a video: https://drive.google.com/file/d/1gP8iWLKEKyuuV7yGvbxWcRd90X-XedA8/view
+>My first iterations of this were on a cardboard box (as my base) with physical components that I planned to use further down the line (perceptron, switches, etc.) If you'd like to watch a video: https://drive.google.com/file/d/1gP8iWLKEKyuuV7yGvbxWcRd90X-XedA8/view
 >
-><img width="581" height="531" alt="BIG IMAGE" src="https://github.com/user-attachments/assets/a0f5ca0f-d4e3-4756-9257-ea23c33b1a83" />
+><img width="387" height="354" alt="BIG IMAGE" src="https://github.com/user-attachments/assets/a0f5ca0f-d4e3-4756-9257-ea23c33b1a83" />
 >
 >*Figure 4: My actual work-like perceptron paper prototype*
 >
 ><img width="540" height="327" alt="Screenshot 2026-04-15 at 2 39 56 AM" src="https://github.com/user-attachments/assets/b2ca9573-be8e-407c-a2b5-5d4dc9c7fdf9" />
+>
 > *Figure 5: Image of my Piazza post sharing the math behind the first layer of my neural network*
 
+Now for the part that you've been waiting for (drumroll please)... Before that though, thank you for following along so far, and if some of this stuff makes absolutely no sense, great! I was in your shoes a few months ago. :) 
 
 
 
 
 
+### What Is a Perceptron?
+> A perceptron is the simplest possible form of an artificial neural network. The main idea was conceived by Frank Rosenblatt in 1957; it's the fundamental building block from which every modern deep learning model—GPT, Claude, AlphaFold—ultimately descends.
+>
+> At its core, a perceptron does three things:
+> * Takes multiple inputs and assigns each a numerical weight
+> * Computes a weighted sum of those inputs plus a constant bias term
+> * Applies a threshold (activation) function — outputs 1 if the sum exceeds the threshold, 0 (or -1) if it does not
+>   
+> Mathematically, the output is: ŷ = $\sum_{i=1}^{n}(w₁x₁ + w₂x₂ + b)$
+>
+> Where:
+> * x₁, x₂ are the binary inputs (switches: ON = 1, OFF = 0 || (-1))
+> * w₁, w₂ are the weights (set by the potentiometers)
+> * b is the bias (a constant offset that shifts the decision boundary)
+> * $\sum_{i=1}^{n} ()$ is the activation function — positive sum → Class A, a zero, or negative sum → Class B
+> 
+> The perceptron is a binary linear classifier. Geometrically, the equation w₁x₁ + w₂x₂ + b = 0 defines a straight line in 2D space. Everything on one side of that line is Class A; everything on the other is Class B. Training the perceptron means adjusting w₁, w₂, and b until that line correctly separates all your training examples.[^1] [GeeksForGeeks: What Is a Perceptron?] (HAVE // THIS BE A LINK TO THE BOTTOM)
+>
+> <img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/075e5531-0592-40f9-9329-bc18fefd3d61" />
+>
+> *Figure 6: GeeksForGeeks — Perceptron diagram illustrating weighted inputs, summation, and activation function*
+> 
 
 
 
 
 
+This is a claim that needs a citation.[^1]
+Another sentence with a different source.[^2]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Now for the part that you've been waiting for (drumroll please)... 
-
-P.S. Thank you for following along so far, and if some of this stuff makes absolutely no sense, great! I was in your shoes a few months ago. :) 
-
-
-
-/TITLE What Is a Perceptron?
-
-A perceptron is the simplest possible form of an artificial neural network. The main idea was conceived by Frank Rosenblatt in 1957; it's the fundamental building block from which every modern deep learning model—GPT, Claude, AlphaFold—ultimately descends.
-
-At its core, a perceptron does three things:
-- Takes multiple inputs and assigns each a numerical weight
-- Computes a weighted sum of those inputs plus a constant bias term
-- Applies a threshold (activation) function — outputs 1 if the sum exceeds the threshold, 0 (or -1) if it does not
-
-Mathematically, the output is:
-ŷ = sign(w₁x₁ + w₂x₂ + b)
-
-Where:
-x₁, x₂ are the binary inputs (switches: ON = 1, OFF = 0 || (-1))
-w₁, w₂ are the weights (set by the potentiometers)
-b is the bias (a constant offset that shifts the decision boundary)
-sign() is the activation function — positive sum → Class A, a zero, or negative sum → Class B
-
-The perceptron is a binary linear classifier. Geometrically, the equation w₁x₁ + w₂x₂ + b = 0 defines a straight line in 2D space. Everything on one side of that line is Class A; everything on the other is Class B. Training the perceptron means adjusting w₁, w₂, and b until that line correctly separates all your training examples. [GeeksForGeeks: What Is a Perceptron?] (HAVE // THIS BE A LINK TO THE BOTTOM)
-
-<img width="800" height="400" alt="image" src="https://github.com/user-attachments/assets/075e5531-0592-40f9-9329-bc18fefd3d61" />
-
-Image Source: GeeksForGeeks — Perceptron diagram illustrating weighted inputs, summation, and activation function.
-
-
+[^1]: Smith, J. (2023). *Title of Work*.
+[^2]: Doe, A. (2024). "Journal Article Name."
