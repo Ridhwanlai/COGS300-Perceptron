@@ -29,11 +29,13 @@ My personal project for COGS300
 >Building a perceptron physically—where every weight is a dial you can turn, every summation is a voltage you can probe with a multimeter, and the decision boundary is literally a wire connecting an op-amp to an LED—forces genuine mechanistic understanding. There is no abstraction to hide behind. Every concept from the theory (weighted sum, threshold, convergence) has a direct, tangible counterpart on the breadboard (that you could also see through an interface I generated using Claude in Processing).
 >
 >This project emerged from a sketch I showed my professor: a biological neuron I had drawn by hand, and the words "this is what I want to build." Well, that vision evolved into a perceptron, and after many late nights and numerous hours of fine-tuning, re-understanding concepts, and crashing out (every once in a while), here we are. Thank you to Paul for guiding me in the right direction and for being there to troubleshoot; it's moments like these that I'm reminded of the value of an education!
+>*trying out text*
 >
 ><img width="455" height="251" alt="IMG 5848" src="https://github.com/user-attachments/assets/f3172926-0194-439d-9ac6-701db2fa5c55" />
 > _Figure 1: The 'Pitches and Sketches' Diagram that I showed Paul_
 
 
+*trying out text*
 
 
 How a Perceptron Relates to a Biological Neuron
