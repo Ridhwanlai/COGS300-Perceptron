@@ -3,6 +3,25 @@ My personal project for COGS300
 
 /TITLE Table of Contents
 
+
+Heading Example	Resulting Anchor ID
+## My Section	#my-section
+### 1.1 Hello World!	#11-hello-world
+
+
+| Topic | Link |
+| :--- | :--- |
+| Introduction | [Jump to Intro](#introduction) |
+| Installation | [Jump to Install](#installation-steps) |
+
+## Introduction
+Content here...
+
+## Installation Steps
+Content here...
+
+1. [Introduction and Background](#Introduction-and-Background)
+
 1. Introduction and Background
 - Why I Built This
 - How a Perceptron Relates to a Biological Neuron
@@ -35,16 +54,13 @@ Conclusion
 >
 >This project emerged from a sketch I showed my professor: a biological neuron I had drawn by hand, and the words "this is what I want to build." Well, that vision evolved into a perceptron, and after many late nights and numerous hours of fine-tuning, re-understanding concepts, and crashing out (every once in a while), here we are. Thank you to Paul for guiding me in the right direction and for being there to troubleshoot; it's moments like these that I'm reminded of the value of an education!
 >
->
 ><img width="455" height="251" alt="IMG 5848" src="https://github.com/user-attachments/assets/f3172926-0194-439d-9ac6-701db2fa5c55" />
 >
 >*Figure 1: The 'Pitches and Sketches' Diagram that I showed Paul*
 
 ### How a Perceptron Relates to a Biological Neuron
 >
->The perceptron is directly inspired by the structure of a biological neuron.[^1]
->
->In the brain, a neuron receives signals through its dendrites, integrates them in the cell body (soma), and—if the total signal crosses a threshold—fires an electrical spike down the axon, across the synaptic cleft, to the dendrites of the next neuron.
+>The structure of a biological neuron directly inspires the perceptron.[^1] In the brain, a neuron receives signals through its dendrites, integrates them in the cell body (soma), and—if the total signal crosses a threshold—fires an electrical spike down the axon, across the synaptic cleft, to the dendrites of the next neuron.
 >
 >| Biological Neuron                          | Analog Perceptron                          |
 >| ------------------------------------------ | ------------------------------------------ |
@@ -73,7 +89,7 @@ Conclusion
 >
 > *Figure 5: Image of my Piazza post sharing the math behind the first layer of my neural network*
 
-Now for the part that you've been waiting for (drumroll please)... Before that though, thank you for following along so far, and if some of this stuff makes absolutely no sense, great! I was in your shoes a few months ago. :) 
+Now for the part that you've been waiting for (drumroll please)... Before that, though, thank you for following along so far, and if some of this stuff makes absolutely no sense, great! I was in your shoes a few months ago. :) 
 
 
 ## Perceptron Breakdown
@@ -85,12 +101,12 @@ Now for the part that you've been waiting for (drumroll please)... Before that t
 > **At its core, a perceptron does three things:**
 > * Takes multiple inputs and assigns each a numerical weight
 > * Computes a weighted sum of those inputs plus a constant bias term
-> * Applies a threshold (activation) function — outputs 1 if the sum exceeds the threshold, 0 (or -1) if it does not
+> * Applies a threshold (activation) function — outputs 1 if the sum exceeds the threshold, <0 if it does not
 >   
 > Mathematically, the output is: $ŷ = \sum_{i=1}^{n}(w₁x₁ + w₂x₂ + b)$
 >
 > **Where:**
-> * $x₁$, $x₂$ are the binary inputs (switches: ON = 1, OFF = 0 || (-1))
+> * $x₁$, $x₂$ are the binary inputs (switches: ON = 1, OFF = <0)
 > * $w₁$, $w₂$ are the weights (set by the potentiometers)
 > * $b$ is the bias (a constant offset that shifts the decision boundary)
 > * $\sum_{i=1}^{n} ()$ is the activation function - positive sum → Class A, a zero, or negative sum → Class B
@@ -101,34 +117,33 @@ Now for the part that you've been waiting for (drumroll please)... Before that t
 >
 > *Figure 6: GeeksForGeeks - Perceptron diagram illustrating weighted inputs, summation, and activation function*
 
+### Circuit Architecture — How My Physical Build Works
+> 
+> My circuit implements the perceptron equation $ŷ = \sum_{i=1}^{n}(w₁x₁ + w₂x₂ + b)$ in five distinct physical stages:
+> 
+> #### Stage 1: Inputs $(x₁, x₂)$
+> Two positions of a DIP switch act as binary inputs. When a switch is ON, it connects 9V to the corresponding weight potentiometer, representing input = 1. When OFF, a pull-down resistor holds the line firmly at 0V (representing input = <0). The pull-down is essential: without it, an open switch leaves the input floating at an undefined voltage, producing garbage readings.
+> #### Stage 2 — Weights $(w₁, w₂, b)$
+> Three 3386MP trimmer potentiometers act as the learnable weights. Each pot is wired as a voltage divider:
+> * Left pin → input signal (from switch, or 9V directly for bias)
+> * Right pin → GND
+> * Center pin (wiper) → outputs a voltage proportional to how far the knob is turned
+> Turning the knob clockwise increases the weight (more voltage passes through), and counterclockwise approaches zero. The third pot (RV3) is always connected to 9V regardless of switch state; this is the bias term b, which shifts the decision boundary away from the origin.
+>
+> #### Stage 3 — Summation Node $\sum$
+> The center (wiper) pins of all three pots connect to the same row on the breadboard through 220Ω series resistors. Because breadboard rows are internally connected, the three voltages combine passively. The voltage at this shared row is: $V_(sum) = (w₁x₁ + w₂x₂ + b) / 3$. The division by 3 occurs because three equal resistors share the summing row (this is the resistive summing network). The relative relationships between inputs are preserved perfectly.
+>
+> There are two possible ways to get a reading. The first is by using a multimeter as the output reader. Set it to DC Volts. Red probe on the summing row, black probe on GND. The voltage you read is $ŷ$. Above 4.5V = positive prediction. Below 4.5V = either a zero or a negative prediction. The second is what I did: create a UI interface that can detect the movements of your breadboard and read your output directly.
 
 
-(organize this afterwards)
-Circuit Architecture — How my Physical Build Works
-The circuit implements the perceptron equation ŷ = sign(w₁x₁ + w₂x₂ + b) in five distinct physical stages:
-Stage 1 — Inputs (x₁, x₂)
-Two positions of a DIP switch act as binary inputs. When a switch is ON, it connects 9V to the corresponding weight potentiometer — representing input = +1. When OFF, a pull-down resistor holds the line firmly at 0V — representing input = −1. The pull-down is essential: without it, an open switch leaves the input floating at an undefined voltage, producing garbage readings.
-Stage 2 — Weights (w₁, w₂, b)
-Three 3386MP trimmer potentiometers act as the learnable weights. Each pot is wired as a voltage divider:
 
-Left pin → input signal (from switch, or 9V directly for bias)
-Right pin → GND
-Center pin (wiper) → outputs a voltage proportional to how far the knob is turned
-
-Turning the knob clockwise increases the weight (more voltage passes through). Counterclockwise approaches zero. The third pot (RV3) is always connected to 9V regardless of switch state — this is the bias term b, which shifts the decision boundary away from the origin.
-Stage 3 — Summation Node (Σ)
-The center (wiper) pins of all three pots connect to the same row on the breadboard through 220Ω series resistors. Because breadboard rows are internally connected, the three voltages combine passively. The voltage at this shared row is:
-V_sum = (w₁x₁ + w₂x₂ + b) / 3
-The division by 3 occurs because three equal resistors share the summing row — this is the resistive summing network. The relative relationships between inputs are preserved perfectly.
-
-Your multimeter IS the output reader here. Set it to DC Volts. Red probe on the summing row, black probe on GND. The voltage you read is ŷ. Above 4.5V = positive prediction. Below 4.5V = negative prediction.
-
-Stage 4 — Threshold / Activation Function (TL074)
-The TL074 quad op-amp is used as a comparator — comparing the summing node voltage against a fixed reference voltage (Vref = 4.5V, set by a pair of equal 220Ω resistors forming a voltage divider from 9V to GND). [^4]
+// FIXING THIS STAGE, my previous method
+> #### Stage 4 — Threshold / Activation Function (TL074)
+> The quad op-amp is used as a comparator — comparing the summing node voltage against a fixed reference voltage (Vref = 4.5V, set by a pair of equal 220Ω resistors forming a voltage divider from 9V to GND). [^4]
 Two internal amplifiers of the TL074 are used:
 
-Comparator 1 (pins 2, 3, 1): +IN = V_sum, −IN = Vref → output HIGH when sum > Vref → green LED
-Comparator 2 (pins 5, 6, 7): +IN = Vref, −IN = V_sum → output HIGH when Vref > sum → blue LED [^5]
+Comparator 1 (pins 2, 3, 1): +IN = $V_(sum)$, −IN = $V_(ref)$ → output HIGH when sum > Vref → green LED
+Comparator 2 (pins 5, 6, 7): +IN = Vref, −IN = $V_(sum)$ → output HIGH when Vref > sum → blue LED [^5]
 
 This gives mutually exclusive LED outputs — exactly one lights at a time.
 Stage 5 — Output (ŷ)
@@ -148,10 +163,10 @@ Blue LED = negative prediction = Class B
 > **The Arduino reads:**
 > * The voltage at the summing node (Row S) via an analog input pin
 > * The state of the two DIP switch inputs
-> * It then streams this data as CSV over serial $(x1, x2, v_sum)$ to a Processing sketch running on a connected laptop
+> * It then streams this data as CSV over serial $(x1, x2, V_(sum))$ to a Processing sketch running on a connected laptop
 >   
 > **The Processing visualization displays:**
-> * A real-time dial/gauge showing the current value of $v_sum$ — styled with a CRT aesthetic, sweeping left to right as you turn the potentiometer knobs. This makes the summation visible in a way that a multimeter alone cannot convey to an audience watching from a distance.
+> * A real-time dial/gauge showing the current value of $V_(sum)$ — styled with a CRT aesthetic, sweeping left to right as you turn the potentiometer knobs. This makes the summation visible in a way that a multimeter alone cannot convey to an audience watching from a distance.
 > * A 2D decision boundary plot showing the current classification line $w₁x₁ + w₂x₂ + b = 0$, updating live as the pots are turned
 > * LED indicators mirroring the physical LEDs, so the audience can see the binary output clearly on-screen
 > * The current values of $w₁, w₂$, and $b$ displayed numerically as the knobs are adjusted
