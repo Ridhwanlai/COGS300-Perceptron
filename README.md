@@ -33,7 +33,7 @@
 >><img width="455" height="251" alt="IMG 5848" src="https://github.com/user-attachments/assets/f0c49719-b95d-49a7-9f5c-0e367ecbbefb" />
 >>
 >> *Figure 1: The 'Pitches and Sketches' Diagram that I showed Paul*
->> <mark>Highlighted Text<my final perceptron taken a picture of? with the green light on>
+>
 
 ### How a Perceptron Relates to a Biological Neuron
 >
