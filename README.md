@@ -128,8 +128,6 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 >
 > There are two possible ways to get a reading of this sum. The first is by using a multimeter as the output reader. This is what I initially planned to do. Set it to DC Volts. Red probe on the summing row, black probe on GND. The voltage you read is $\overline{y}$. Above 4.5V = positive prediction. Below 4.5V = either a zero or a negative prediction. The second—and what I ended up building—is a Processing UI that reads the Arduino's analog measurement of this output voltage and visualizes the summation in real time as you turn the knobs. [See Processing Visualization](#processing-visualization)
 >
->>> //*add screenshot of processing image of this working*
->
 > #### Stage 4: Activation Function (LM311 Comparator)
 > The summed output from the TL074 feeds into the LM311 voltage comparator. The LM311 is a dedicated comparator IC — unlike a general-purpose op-amp, it is designed specifically for this job: it switches its output cleanly and quickly between HIGH and LOW based on which of its two inputs is larger. [^4]
 
@@ -137,13 +135,21 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 > * V+ (non-inverting input) → $V_{sum}$ from the TL074 output
 > * V− (inverting input) → $V_{ref}$ = 4.5V (set by two equal 220Ω resistors forming a voltage divider from 9V to GND)
 > * When $V_{sum} > V_{ref}$: output goes HIGH → green LED lights (Class A — positive prediction)
-> * When $V_{sum} < V_{ref}$: output goes LOW → blue LED lights (Class B — negative prediction)
+>>
+>><img width="458" height="283" alt="LED ON" src="https://github.com/user-attachments/assets/e76d3d95-46c5-48de-80bd-465c0ddff2c8" />
+>> 
+>> *Figure 10: My perceptron reading a HIGH output*
+>> * When $V_{sum} < V_{ref}$: output goes LOW → blue LED lights (Class B — negative prediction)
+>> 
+>><img width="456" height="281" alt="LED OFF" src="https://github.com/user-attachments/assets/eed9935a-06aa-4e03-857b-c6e81074fb5e" />
+>> 
+>> *Figure 11: My perceptron reading a LOW output*
 >
 >><img width="326" height="288" alt="Comparator" src="https://github.com/user-attachments/assets/620b7981-2251-4dcc-87ab-538296a77551" /> <img width="326" height="288" alt="Quad Amp" src="https://github.com/user-attachments/assets/f356d67a-ae2e-4e36-b80b-3da94e92b48f" />
 >>
->>*Figure 10: The LM311 comparator on the breadboard*
+>>*Figure 12: The LM311 comparator on the breadboard*
 >>
->>*Figure 11: The TL074CN quad op-amp on the breadboard*
+>>*Figure 13: The TL074CN quad op-amp on the breadboard*
 >
 > #### Stage 5: Output $\overline{y}$
 > Each LM311 output state drives one LED through a 220Ω current-limiting resistor (without this, the LED draws far too much current and burns out immediately — approximately ${(9V − 2V)/220Ω} ≈ 32mA$, safely within the LED's rated range).
@@ -161,20 +167,26 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 > **The Processing visualization displays:**
 > * A real-time dial/gauge showing the current value of $V_{sum}$ — styled with a CRT aesthetic, sweeping left to right as you turn the potentiometer knobs. This makes the summation visible in a way that a multimeter alone cannot convey to an audience watching from a distance.
 > * A 2D decision boundary plot showing the current classification line $(w_1x_1 + w_2x_2 + b) = 0$, updating live as the pots are turned
-> * LED indicators mirroring the physical LEDs, so the audience can see the binary output clearly on-screen
 > * The current values of $(w_1x_1 + w_2x_2)$ and $b$ displayed numerically as the knobs are adjusted
+> * LED indicators mirroring the physical LEDs, so the audience can see the binary output clearly on-screen
 >   
 >> ***Voltage safety note** if you're interested in replicating: The Arduino's analog inputs operate at 5V maximum. The op-amp summing output (0–9V) was stepped down via a 2:1 voltage divider (two equal resistors) before entering the analog pin. This prevents damage to the Arduino.*
+>
+>> https://github.com/user-attachments/assets/672e73bd-2619-43fe-bad7-60b572923499
+>> 
+>>*Video 1: An explanation of how the Perceptron is working, turning on switches and weights*
 >
 
 ### Jupyter Notebook — Software Perceptron
 >
-> To deepen my understanding of the perceptron learning algorithm and go beyond what a physical single-layer analog circuit can do, a software implementation was built in JupyterLab, copying a YouTube demonstration by ethicalPap's Perceptron Algorithm Learning series.[^3]
+>> The file is within my GitHub repo.
+>
+> To deepen my understanding of the perceptron learning algorithm and go beyond what a physical single-layer analog circuit can do, a software implementation was built in [JupyterLab](https://colab.research.google.com/drive/1Jk_zGaJPHm822mu-ubwsRWYv3TLRblkk?usp=sharing), following along a YouTube demonstration by ethicalPap's Perceptron Algorithm Learning series.[^3]
 > 
 > **The notebook implements:**
 > * The perceptron learning rule from scratch in Python (no ML libraries)
 > * Visualization of the decision boundary updating over training epochs
-> * Training on the AND, OR, and NAND logic gate problems
+> * Training on the AND, and OR logic gate problems
 > * A demonstration of why XOR fails (not linearly separable) — the motivation for multi-layer networks
 
 ### Limitations — Why XOR is Impossible (for my Perceptron)
@@ -188,7 +200,7 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 >>| 1    | 0    | 1          |
 >>| 1    | 1    | 0          |
 >>
->> *Figure 13: A table showing the output of an XOR* 
+>> *Figure 14: A table showing the output of an XOR* 
 >
 > No single straight line can separate the 1 outputs from the 0 outputs, as they form an alternating checkerboard pattern. This is why XOR was the problem that broke the first perceptron hype cycle in the 1960s.[^6]
 >
@@ -206,19 +218,19 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 >
 >><img width="516" height="191" alt="Version 1" src="https://github.com/user-attachments/assets/97497637-3591-4074-b67f-c8933e86ea4e" />
 >>
->>*Figure 12: Prototype 1 in TinkerCad*
+>>*Figure 15: Prototype 1 in TinkerCad*
 >
 > **Prototype 2**: Single comparator with fixed threshold, including having a fully operational op-amp comparator stage with a fixed 4.5V Vref divider. Was able to confirm mutually exclusive LED behaviour, exactly one LED on at a time, cleanly switching as the summing node crossed the threshold. The problem was that my summation was subtracting from the row, never crossing the threshold.
 >
 >><img width="516" height="245" alt="Version 2" src="https://github.com/user-attachments/assets/ed90c3e4-3ded-4b1d-907d-e003ea585121" />
 >>
->>*Figure 13: Prototype 2 in TinkerCad*
+>>*Figure 16: Prototype 2 in TinkerCad*
 >
 > **Prototype 3:** Full circuit with dual comparators and DIP switch inputs. Complete design: two-position DIP switch inputs with pull-down resistors, three pots (two for weights, one for bias), resistive summing network, dual TL074 comparator outputs, and both LEDs with current-limiting resistors. This is the final design that made me feel comfortable enough to transfer what I knew onto a physical breadboard.
 >
 >><img width="516" height="190" alt="Version 3" src="https://github.com/user-attachments/assets/ad3b7411-2258-4fe7-a3ff-86b5ab8297b4" />
 >>
->>*Figure 14: Prototype 3 in TinkerCad*
+>>*Figure 17: Prototype 3 in TinkerCad*
 >
 
 ### Reflections
@@ -228,6 +240,21 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 >What came out the other side is something I'm genuinely proud to produce: a (mostly) working, physical, trainable machine learning model that you can hold, probe with a multimeter, train by turning dials, and watch make decisions in real time. The next step is to take the understanding built here and create systems that do really cool things (essentially run with this). Multi-layer networks. Real-time biosignal classification. Transparent, interpretable models for healthcare contexts where the stakes are high enough that "I don't know why it decided that" is not an acceptable answer.
 >
 >These may seem like big dreams, but there was a point in the semester when I didn’t think I’d make it. But with a bit of twisting and turning, I was able to reach the desired output. Thank you!
+>
+> #### Moments Along The Way
+>>
+>><img width="3024" height="2477" alt="IMG 6820" src="https://github.com/user-attachments/assets/5a504a4d-bfe5-46c5-b09e-159553e3afa6" />
+>>
+>>*Figure 18: Late-night working session in my room (taken in early March)*
+>
+>><img width="5712" height="2871" alt="IMG 6834" src="https://github.com/user-attachments/assets/6793beea-87e5-4861-ba0c-b8a4469cdb16" />
+>>
+>>*Figure 19: At the library! Shoutout to Subway for fueling me throughout this journey*
+>
+>>https://github.com/user-attachments/assets/37a721df-7193-4a90-aedf-ae5dd85f1f77
+>>
+>>*Video 2: Time-lapse of me pulling an all-nighter ahead of my presentation day (it was a success!)*
+>
 
 ### References & Citations
 >
