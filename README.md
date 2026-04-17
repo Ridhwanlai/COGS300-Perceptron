@@ -131,7 +131,7 @@
 >
 > #### Stage 4: Activation Function (LM311 Comparator)
 > The summed output from the TL074 feeds into the LM311 voltage comparator. The LM311 is a dedicated comparator IC — unlike a general-purpose op-amp, it is designed specifically for this job: it switches its output cleanly and quickly between HIGH and LOW based on which of its two inputs is larger. [^4]
-
+>
 >The LM311 compares two voltages:
 > * V+ (non-inverting input) → $V_{sum}$ from the TL074 output
 > * V− (inverting input) → $V_{ref}$ = 4.5V (set by two equal 220Ω resistors forming a voltage divider from 9V to GND)
