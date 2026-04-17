@@ -121,7 +121,7 @@
 > #### Stage 3: Summation Node $\sum$
 >The center (wiper) pins of all three pots connect through equal 220Ω series resistors into the inverting row input of one TL074CN quad op-amp (on the breadboard), which is wired as an inverting summing amplifier. With equal input resistors $(R)$ and a feedback resistor $(R_f)$, the output is: $V_{sum} = -\frac{R_f}{R}(w_1x_1 + w_2x_2 + b)$
 >
->The output is inverted, which is accounted for in the comparator stage. Unlike passive resistive summing (where voltages interact and load each other), the op-amp actively buffers the result, giving a clean, accurate weighted $V_{sum}$ regardless of what the LEDs or downstream circuitry are doing. This is the key advantage of using the TL074 here rather than relying on passive summing alone.
+>The output is inverted, which is accounted for in the comparator stage. Unlike passive resistive summing (where voltages interact and load each other), the op-amp actively buffers the result, giving a clean, accurate weighted $V_{sum}$ regardless of what the LEDs or downstream circuitry are doing. This is the key advantage of using the TL074 here rather than relying on passive summing alone.[^5]
 >
 >><img width="504" height="273" alt="SUMMM" src="https://github.com/user-attachments/assets/eb7c71be-2a5c-4189-a583-492c19a332c6" />
 >>
