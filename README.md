@@ -139,7 +139,9 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 >><img width="458" height="283" alt="LED ON" src="https://github.com/user-attachments/assets/e76d3d95-46c5-48de-80bd-465c0ddff2c8" />
 >> 
 >> *Figure 10: My perceptron reading a HIGH output*
->> * When $V_{sum} < V_{ref}$: output goes LOW → blue LED lights (Class B — negative prediction)
+>
+> * When $V_{sum} < V_{ref}$: output goes LOW → blue LED lights (Class B — negative prediction)
+> 
 >> 
 >><img width="456" height="281" alt="LED OFF" src="https://github.com/user-attachments/assets/eed9935a-06aa-4e03-857b-c6e81074fb5e" />
 >> 
@@ -152,7 +154,7 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 >>*Figure 13: The TL074CN quad op-amp on the breadboard*
 >
 > #### Stage 5: Output $\overline{y}$
-> Each LM311 output state drives one LED through a 220Ω current-limiting resistor (without this, the LED draws far too much current and burns out immediately — approximately ${(9V − 2V)/220Ω} ≈ 32mA$, safely within the LED's rated range).
+> Each LM311 output state drives one LED through a 220Ω current-limiting resistor (without this, the LED draws far too much current and burns out immediately — approximately $({{9V − 2V}/{220Ω}) ≈ 32mA$, safely within the LED's rated range).
 
 ### Processing Visualization
 >
@@ -243,11 +245,11 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 >
 > #### Moments Along The Way
 >>
->><img width="3024" height="2477" alt="IMG 6820" src="https://github.com/user-attachments/assets/5a504a4d-bfe5-46c5-b09e-159553e3afa6" />
+>><img width="336" height="275" alt="IMG 6820" src="https://github.com/user-attachments/assets/5a504a4d-bfe5-46c5-b09e-159553e3afa6" />
 >>
 >>*Figure 18: Late-night working session in my room (taken in early March)*
 >
->><img width="5712" height="2871" alt="IMG 6834" src="https://github.com/user-attachments/assets/6793beea-87e5-4861-ba0c-b8a4469cdb16" />
+>><img width="476" height="239" alt="IMG 6834" src="https://github.com/user-attachments/assets/6793beea-87e5-4861-ba0c-b8a4469cdb16" />
 >>
 >>*Figure 19: At the library! Shoutout to Subway for fueling me throughout this journey*
 >
@@ -258,9 +260,10 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 
 ### References & Citations
 >
-> [^1]: Rosenblatt, F. (1958). *The Perceptron: A probabilistic model for information storage and organization in the brain.* Psychological Review, 5(), 38–408.
+> [^1]: Rosenblatt, F. (1958). *The Perceptron: A probabilistic model for information storage and organization in the brain.* Psychological Review, 5(), 38–408
 > [^2]: [GeeksForGeeks — What Is a Perceptron?](https://www.geeksforgeeks.org/deep-learning/what-is-perceptron-the-simplest-artificial-neural-network/)
 > [^3]: [ethicalPap — Machine Learning 101, Lecture 2: Perceptron Algorithm](https://www.youtube.com/watch?v=ziDrxd_JTvs)
 > [^4]: [Texas Instruments — LM311 Datasheet]([https://media.digikey.com/pdf/Data%20Sheets/Rohm%20PDFs/BA10324A_AF_AFV.pdf](https://www.ti.com/product/LM311?ds_k=LM311+Datasheet&DCM=yes&gad_campaignid=14388345080&gbraid=0AAAAAC08F2oICd-7U2a7-dLEgwnclq0))
 > [^5]: [Texas Instruments — TL074 Datasheet](https://www.ti.com/product/TL074)
-> [^6]: Minsky, M. & Papert, S. (199). *Perceptrons.* MIT Press.
+> [^6]: Minsky, M. & Papert, S. (199). *Perceptrons.* MIT Press
+>
