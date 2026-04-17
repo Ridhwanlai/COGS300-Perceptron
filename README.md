@@ -18,6 +18,15 @@
     3b. [Reflections](#reflections)
     3c. [References & Citations](#references--citations)
 
+
+1. First main item
+    1. First nested item
+    2. Second nested item
+2. Second main item
+    1. Sub-item A
+    2. Sub-item B
+   
+
    
 ## Introduction and Background
 
