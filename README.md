@@ -264,7 +264,7 @@
 > [^1]: Rosenblatt, F. (1958). *The Perceptron: A probabilistic model for information storage and organization in the brain.* Psychological Review, 5(), 38–408
 > [^2]: [GeeksForGeeks — What Is a Perceptron?](https://www.geeksforgeeks.org/deep-learning/what-is-perceptron-the-simplest-artificial-neural-network/)
 > [^3]: [ethicalPap — Machine Learning 101, Lecture 2: Perceptron Algorithm](https://www.youtube.com/watch?v=ziDrxd_JTvs)
-> [^4]: [Texas Instruments — LM311 Datasheet]([https://media.digikey.com/pdf/Data%20Sheets/Rohm%20PDFs/BA10324A_AF_AFV.pdf](https://www.ti.com/product/LM311?ds_k=LM311+Datasheet&DCM=yes&gad_campaignid=14388345080&gbraid=0AAAAAC08F2oICd-7U2a7-dLEgwnclq0))
+> [^4]: [Texas Instruments — LM311 Datasheet]([https://media.digikey.com/pdf/Data%20Sheets/Rohm%20PDFs/BA10324A_AF_AFV.pdf](https://www.ti.com/product/LM311?ds_k=LM311+Datasheet&DCM=yes&gad_campaignid=14388345080&gbraid=0AAAAAC08F2oICd-7U2a7-dLEgwnclq0)
 > [^5]: [Texas Instruments — TL074 Datasheet](https://www.ti.com/product/TL074)
 > [^6]: Minsky, M. & Papert, S. (199). *Perceptrons.* MIT Press
 >
