@@ -30,10 +30,9 @@
 >Building a perceptron physically—where every weight is a dial you can turn, every summation is a voltage you can probe with a multimeter, and the decision boundary is literally a wire connecting an op-amp to an LED—forces genuine mechanistic understanding. There is no abstraction to hide behind. Every concept from the theory (weighted sum, threshold, convergence) has a direct, tangible counterpart on the breadboard (which you could also see in the user interface (UI) file within this repo).
 >
 >This project emerged from a sketch I showed my professor: a biological neuron I had drawn by hand, and the words "this is what I want to build." That vision evolved into a perceptron, and after many late nights and numerous hours of fine-tuning, re-understanding concepts, and crashing out (every once in a while), here we are. Thank you, Paul, for guiding me in the right direction and for being there to troubleshoot. It's moments like these that remind me of the value of an education!
->
-><img width="455" height="251" alt="IMG 5848" src="https://github.com/user-attachments/assets/f317292-0194-439d-9ac-701db2fa5c55" />
->
->*Figure 1: The 'Pitches and Sketches' Diagram that I showed Paul*
+>>
+>><img width="455" height="251" alt="IMG 5848" src="https://github.com/user-attachments/assets/f0c49719-b95d-49a7-9f5c-0e367ecbbefb" />
+>>*Figure 1: The 'Pitches and Sketches' Diagram that I showed Paul*
 >
 >///////////////my final perceptron taken a picture of? with the green light on
 
