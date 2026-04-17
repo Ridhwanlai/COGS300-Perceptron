@@ -20,7 +20,7 @@ Conclusion
 
 
 1. [Introduction and Background](#introduction-and-background)
-   1a. [Why I Built This](#why-i-built-this)
+   * 1a. [Why I Built This](#why-i-built-this)
    1b. [How a Perceptron Relates to a Biological Neuron](#how-a-perceptron-relates-to-a-biological-neuron)
 
 2. [Perceptron Breakdown](#perceptron-breakdown)
