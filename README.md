@@ -56,7 +56,7 @@
 >>
 >>*Figure 3: My perceptron prototype theory on paper*
 >
->My first iterations of this were on a cardboard box (as my base) with physical components I planned to use later (perceptron, switches, etc.). [Ridhwnalai's Works-like Prototype](https://drive.google.com/file/d/1gP8iWLKEKyuuV7yGvbxWcRd90X-XedA8/view)
+>My first iterations of this were on a cardboard box (as my base) with physical components I planned to use later (perceptron, switches, etc.). [Ridhwanlai's Works-like Prototype](https://drive.google.com/file/d/1gP8iWLKEKyuuV7yGvbxWcRd90X-XedA8/view)
 >
 >><img width="387" height="354" alt="BIG IMAGE" src="https://github.com/user-attachments/assets/a9f11f79-e6c6-4353-b978-5eafb5f90d64" />
 >>
@@ -65,7 +65,8 @@
 >><img width="540" height="327" alt="Screenshot 2026-04-15 at 2 39 56 AM" src="https://github.com/user-attachments/assets/b2ca9573-be8e-407c-a2b5-5d4dc9c7fdf9" />
 >>
 >> *Figure 5: Image of my Piazza post sharing the math behind the first layer of my neural network*
-Now for the part you've been waiting for (drumroll, please)... Before that, though, thank you for following along so far. If some of this makes absolutely no sense, great! I was in your shoes a few months ago. :)
+>
+> Now for the part you've been waiting for (drumroll, please)... Before that, though, thank you for following along so far. If some of this makes absolutely no sense, great! I was in your shoes a few months ago. :)
 >
 
 ## Perceptron Breakdown
@@ -154,7 +155,7 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 >>*Figure 13: The TL074CN quad op-amp on the breadboard*
 >
 > #### Stage 5: Output $\overline{y}$
-> Each LM311 output state drives one LED through a 220Ω current-limiting resistor (without this, the LED draws far too much current and burns out immediately — approximately $({{9V − 2V}/{220Ω}) ≈ 32mA$, safely within the LED's rated range).
+> Each LM311 output state drives one LED through a 220Ω current-limiting resistor (without this, the LED draws far too much current and burns out immediately — approximately $({9V − 2V}/{220Ω}) ≈ 32mA$, safely within the LED's rated range).
 
 ### Processing Visualization
 >
@@ -167,7 +168,7 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 > * It then streams this data as CSV over serial $(x_1, x_2, V_{sum})$ to a Processing sketch running on a connected laptop
 >   
 > **The Processing visualization displays:**
-> * A real-time dial/gauge showing the current value of $V_{sum}$ — styled with a CRT aesthetic, sweeping left to right as you turn the potentiometer knobs. This makes the summation visible in a way that a multimeter alone cannot convey to an audience watching from a distance.
+> * A real-time dial/gauge showing the current value of $V_{sum}$ — styled with a CRT aesthetic, sweeping left to right as you turn the potentiometer knobs
 > * A 2D decision boundary plot showing the current classification line $(w_1x_1 + w_2x_2 + b) = 0$, updating live as the pots are turned
 > * The current values of $(w_1x_1 + w_2x_2)$ and $b$ displayed numerically as the knobs are adjusted
 > * LED indicators mirroring the physical LEDs, so the audience can see the binary output clearly on-screen
@@ -222,7 +223,7 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 >>
 >>*Figure 15: Prototype 1 in TinkerCad*
 >
-> **Prototype 2**: Single comparator with fixed threshold, including having a fully operational op-amp comparator stage with a fixed 4.5V Vref divider. Was able to confirm mutually exclusive LED behaviour, exactly one LED on at a time, cleanly switching as the summing node crossed the threshold. The problem was that my summation was subtracting from the row, never crossing the threshold.
+> **Prototype 2**: Single comparator with fixed threshold, including having a fully operational op-amp comparator stage with a fixed 4.5V V_{ref} divider. Was able to confirm mutually exclusive LED behaviour, exactly one LED on at a time, cleanly switching as the summing node crossed the threshold. The problem was that my summation was subtracting from the row, never crossing the threshold.
 >
 >><img width="516" height="245" alt="Version 2" src="https://github.com/user-attachments/assets/ed90c3e4-3ded-4b1d-907d-e003ea585121" />
 >>
