@@ -21,12 +21,10 @@ Content here...
 Content here...
 
 1. [Introduction and Background](#Introduction-and-Background)
+   1a. [Why I Built This](#Why-I-Built-This)
+   1b. [How a Perceptron Relates to a Biological Neuron](#How-a-Perceptron-Relates-to-a-Biological-Neuron)
 
-1. Introduction and Background
-- Why I Built This
-- How a Perceptron Relates to a Biological Neuron
-
-Perceptron Breakdown
+2. [Perceptron Breakdown](#Perceptron-Breakdown]
 - What Is a Perceptron?
 - Circuit Architecture — How my Physical Build Works
 - Processing Visualization (Generation Aided by Claude)
@@ -46,13 +44,13 @@ Conclusion
 
 ### Why I Built This
 >
->Hi, my name is Ridhwan! This was my final project (a perceptron) for COGS 300: Understanding and Designing Cognitive Systems, a course at UBC, where we built autonomous maze-solving robots and learned about machine learning (ML) topics for designing intelligent systems.
+>Hi, my name is Ridhwan! This was my final project (a perceptron) for COGS 300: Understanding and Designing Cognitive Systems, a course at UBC where we built autonomous maze-solving robots and learned about machine learning (ML) topics for designing intelligent systems.
 >
 >I'm interested in healthcare and the development of transparent, interpretable AI systems. A recurring concern I have with modern ML is that we often deploy systems without truly understanding their internal mechanics, a form of epistemic dishonesty that carries real risk when those systems influence medical or safety-critical decisions.
 >
->Building a perceptron physically—where every weight is a dial you can turn, every summation is a voltage you can probe with a multimeter, and the decision boundary is literally a wire connecting an op-amp to an LED—forces genuine mechanistic understanding. There is no abstraction to hide behind. Every concept from the theory (weighted sum, threshold, convergence) has a direct, tangible counterpart on the breadboard (that you could also see through an interface I generated using Claude in Processing).
+>Building a perceptron physically—where every weight is a dial you can turn, every summation is a voltage you can probe with a multimeter, and the decision boundary is literally a wire connecting an op-amp to an LED—forces genuine mechanistic understanding. There is no abstraction to hide behind. Every concept from the theory (weighted sum, threshold, convergence) has a direct, tangible counterpart on the breadboard (which you could also see through an interface I generated using Claude in Processing).
 >
->This project emerged from a sketch I showed my professor: a biological neuron I had drawn by hand, and the words "this is what I want to build." Well, that vision evolved into a perceptron, and after many late nights and numerous hours of fine-tuning, re-understanding concepts, and crashing out (every once in a while), here we are. Thank you to Paul for guiding me in the right direction and for being there to troubleshoot; it's moments like these that I'm reminded of the value of an education!
+>This project emerged from a sketch I showed my professor: a biological neuron I had drawn by hand, and the words "this is what I want to build." That vision evolved into a perceptron, and after many late nights and numerous hours of fine-tuning, re-understanding concepts, and crashing out (every once in a while), here we are. Thank you, Paul, for guiding me in the right direction and for being there to troubleshoot. It's moments like these that remind me of the value of an education!
 >
 ><img width="455" height="251" alt="IMG 5848" src="https://github.com/user-attachments/assets/f3172926-0194-439d-9ac6-701db2fa5c55" />
 >
@@ -60,12 +58,12 @@ Conclusion
 
 ### How a Perceptron Relates to a Biological Neuron
 >
->The structure of a biological neuron directly inspires the perceptron.[^1] In the brain, a neuron receives signals through its dendrites, integrates them in the cell body (soma), and—if the total signal crosses a threshold—fires an electrical spike down the axon, across the synaptic cleft, to the dendrites of the next neuron.
+>The structure of a biological neuron directly inspires the perceptron.[^1] In the brain, a neuron receives signals through its dendrites, integrates them in the cell body (soma), and if the total signal crosses a threshold, fires an electrical spike down the axon, across the synaptic cleft, to the dendrites of the next neuron.
 >
 >| Biological Neuron                          | Analog Perceptron                          |
 >| ------------------------------------------ | ------------------------------------------ |
->| Dendrites receiving signals                | DIP switch inputs x₁, x₂                   |
->| Synapse strength                           | Potentiometer dial position (w₁, w₂)       |
+>| Dendrites receiving signals                | DIP switch inputs $x₁$, $x₂$               |
+>| Synapse strength                           | Potentiometer dial position $(w₁$,$w₂)$    |
 >| Axon hillock — summation + threshold check | TL074 op-amp summing node + comparator     |
 >| Action potential (fires or doesn't)        | LED lights (green = fires, blue = doesn't) |
 >| Axon → next neuron                         | Output wire → next circuit stage           |
