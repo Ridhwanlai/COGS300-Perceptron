@@ -238,7 +238,7 @@
 
 ### Reflections
 >
->Safe to say, this went beyond what was expected, or what I expected of myself (for a personal project). From numerous reworkings of the system layout and setup, to debugging summation principles with resistors, to rebuilding the entire approach multiple times (including multiple dead ends in TinkerCad and one complete pivot away from a standalone neuron design), this project took almost everything. And I still gave.
+>Safe to say, this went beyond what I expected of myself (for a personal project). From numerous reworkings of the system layout and setup, to debugging summation principles with resistors, to rebuilding the entire approach multiple times (including multiple dead ends in TinkerCad and one complete pivot away from a standalone neuron design), this project took almost everything. And I still gave.
 >
 >What came out the other side is something I'm genuinely proud to produce: a (mostly) working, physical, trainable machine learning model that you can hold, probe with a multimeter, train by turning dials, and watch make decisions in real time. The next step is to take the understanding built here and create systems that do really cool things (essentially run with this). Multi-layer networks. Real-time biosignal classification. Transparent, interpretable models for healthcare contexts where the stakes are high enough that "I don't know why it decided that" is not an acceptable answer.
 >
