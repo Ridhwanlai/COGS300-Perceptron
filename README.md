@@ -8,8 +8,8 @@
 
 2. [Perceptron Breakdown](#perceptron-breakdown)
     1. [What Is a Perceptron?](#what-is-a-perceptron)
-    2. [Circuit Architecture — How my Physical Build Works](#circuit-architecture--how-my-physical-build-works)
-    3. [Processing Visualization]
+    2. [Circuit Architecture — How My Physical Build Works](#circuit-architecture--how-my-physical-build-works)
+    3. [Processing Visualization](#processing-isualization)
     4. [Jupyter Notebook — Software Perceptron](#jupyter-notebook--software-perceptron)
     5. [Limitations — Why XOR is Impossible (for my Perceptron)](#limitations--why-xor-is-impossible-for-my-perceptron)
 
@@ -31,7 +31,7 @@
 >
 >This project emerged from a sketch I showed my professor: a biological neuron I had drawn by hand, and the words "this is what I want to build." That vision evolved into a perceptron, and after many late nights and numerous hours of fine-tuning, re-understanding concepts, and crashing out (every once in a while), here we are. Thank you, Paul, for guiding me in the right direction and for being there to troubleshoot. It's moments like these that remind me of the value of an education!
 >
-><img width="455" height="251" alt="IMG 5848" src="https://github.com/user-attachments/assets/f3172926-0194-439d-9ac6-701db2fa5c55" />
+><img width="455" height="251" alt="IMG 5848" src="https://github.com/user-attachments/assets/f317292-0194-439d-9ac-701db2fa5c55" />
 >
 >*Figure 1: The 'Pitches and Sketches' Diagram that I showed Paul*
 >
@@ -54,13 +54,13 @@
 >
 >When multiple perceptrons are combined, with the output of one feeding the inputs of others, you get a multi-layer neural network, capable of solving problems no single perceptron can. This is the architecture shown in the upper-left part of my notebook sketch (the multi-layer diagram with attention mechanisms), and the direction I intended for this project. 
 >
-><img width="381" height="285" alt="Image from iLoveIMG" src="https://github.com/user-attachments/assets/e56e0793-2e38-409e-9bd8-60845f1fdf12" />
+><img width="381" height="285" alt="Image from iLoveIMG" src="https://github.com/user-attachments/assets/e5e0793-2e38-409e-9bd8-0845f1fdf12" />
 >
 >*Figure 3: My perceptron prototype theory on paper*
 >
 >My first iterations of this were on a cardboard box (as my base) with physical components I planned to use later (perceptron, switches, etc.). [Ridhwnalai's Works-like Prototype](https://drive.google.com/file/d/1gP8iWLKEKyuuV7yGvbxWcRd90X-XedA8/view)
 >
-><img width="387" height="354" alt="BIG IMAGE" src="https://github.com/user-attachments/assets/a0f5ca0f-d4e3-4756-9257-ea23c33b1a83" />
+><img width="387" height="354" alt="BIG IMAGE" src="https://github.com/user-attachments/assets/a0f5ca0f-d4e3-475-9257-ea23c33b1a83" />
 >
 >*Figure 4: My actual work-like perceptron paper prototype*
 >
@@ -90,9 +90,10 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 > 
 > The perceptron is a binary linear classifier. Geometrically, the equation $(w_1x_1 + w_2x_2 + b) = 0$ defines a straight line in 2D space. Everything on one side of that line is Class A; everything on the other is Class B. Training the perceptron means adjusting $w₁, w₂,$ and $b$ until that line correctly separates all your training examples.[^2]
 >
-<img width="422" height="295" alt="IMG 7031" src="https://github.com/user-attachments/assets/a6b6bc48-4719-4e00-bc62-1c03ac21fa3b" />
+> <img width="422" height="295" alt="IMG 7031" src="https://github.com/user-attachments/assets/a6b6bc48-4719-4e00-bc62-1c03ac21fa3b" />
 >
-> *Figure 6: My perceptron diagram illustrating weighted inputs, summation, and activation function*
+>*Figure 6: My perceptron diagram illustrating weighted inputs, summation, and activation function*
+>
 
 ### Circuit Architecture — How My Physical Build Works
 > 
@@ -197,18 +198,19 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 > Before committing to the physical build, three full circuit simulations were developed in TinkerCad Circuits to validate the design and catch wiring errors before they became real problems. Tinkercad runs simulations, probe voltages, and flip switches in a virtual environment, which was invaluable for debugging a circuit this interconnected. It also made it much easier to work through the challenges I ran into because I could try a few different versions to get to the core problem.
 >
 > 
-> Prototype 1: Basic summing network (op-amp working) Validated that my three potentiometers wired to a shared row through equal resistors were in fact producing a voltage proportional to the weighted sum of the inputs. I struggled with summation here, and my nodes were not directly feeding into the LED.
+>> Prototype 1: Basic summing network (op-amp working) Validated that my three potentiometers wired to a shared row through equal resistors were in fact producing a voltage proportional to the weighted sum of the inputs. I struggled with summation here, and my nodes were not directly feeding into the LED.
 >
 ><img width="516" height="191" alt="Version 1" src="https://github.com/user-attachments/assets/97497637-3591-4074-b67f-c8933e86ea4e" />
 >
 >*Figure 12: Prototype 1 in TinkerCad*
-> Prototype 2: Single comparator with fixed threshold, including having a fully operational op-amp comparator stage with a fixed 4.5V Vref divider. Was able to confirm mutually exclusive LED behaviour, exactly one LED on at a time, cleanly switching as the summing node crossed the threshold. The problem was that my summation was subtracting from the row, never crossing the threshold.
+>
+>> Prototype 2: Single comparator with fixed threshold, including having a fully operational op-amp comparator stage with a fixed 4.5V Vref divider. Was able to confirm mutually exclusive LED behaviour, exactly one LED on at a time, cleanly switching as the summing node crossed the threshold. The problem was that my summation was subtracting from the row, never crossing the threshold.
 >
 ><img width="516" height="245" alt="Version 2" src="https://github.com/user-attachments/assets/ed90c3e4-3ded-4b1d-907d-e003ea585121" />
 >
 >*Figure 13: Prototype 2 in TinkerCad*
 >
-> Prototype 3: Full circuit with dual comparators and DIP switch inputs. Complete design: two-position DIP switch inputs with pull-down resistors, three pots (two for weights, one for bias), resistive summing network, dual TL074 comparator outputs, and both LEDs with current-limiting resistors. This is the final design that made me feel comfortable enough to transfer what I knew onto a physical breadboard.
+>> Prototype 3: Full circuit with dual comparators and DIP switch inputs. Complete design: two-position DIP switch inputs with pull-down resistors, three pots (two for weights, one for bias), resistive summing network, dual TL074 comparator outputs, and both LEDs with current-limiting resistors. This is the final design that made me feel comfortable enough to transfer what I knew onto a physical breadboard.
 >
 ><img width="516" height="190" alt="Version 3" src="https://github.com/user-attachments/assets/ad3b7411-2258-4fe7-a3ff-86b5ab8297b4" />
 >
@@ -225,9 +227,9 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 
 ### References & Citations
 >
-> [^1]: Rosenblatt, F. (1958). *The Perceptron: A probabilistic model for information storage and organization in the brain.* Psychological Review, 65(6), 386–408.
+> [^1]: Rosenblatt, F. (1958). *The Perceptron: A probabilistic model for information storage and organization in the brain.* Psychological Review, 5(), 38–408.
 > [^2]: [GeeksForGeeks — What Is a Perceptron?](https://www.geeksforgeeks.org/deep-learning/what-is-perceptron-the-simplest-artificial-neural-network/)
 > [^3]: [ethicalPap — Machine Learning 101, Lecture 2: Perceptron Algorithm](https://www.youtube.com/watch?v=ziDrxd_JTvs)
-> [^4]: [Texas Instruments — LM311 Datasheet]([https://media.digikey.com/pdf/Data%20Sheets/Rohm%20PDFs/BA10324A_AF_AFV.pdf](https://www.ti.com/product/LM311?ds_k=LM311+Datasheet&DCM=yes&gad_campaignid=14388345080&gbraid=0AAAAAC068F2oICd-7U2a7-dLEgwnclq06))
+> [^4]: [Texas Instruments — LM311 Datasheet]([https://media.digikey.com/pdf/Data%20Sheets/Rohm%20PDFs/BA10324A_AF_AFV.pdf](https://www.ti.com/product/LM311?ds_k=LM311+Datasheet&DCM=yes&gad_campaignid=14388345080&gbraid=0AAAAAC08F2oICd-7U2a7-dLEgwnclq0))
 > [^5]: [Texas Instruments — TL074 Datasheet](https://www.ti.com/product/TL074)
-> [^6]: Minsky, M. & Papert, S. (1969). *Perceptrons.* MIT Press.
+> [^]: Minsky, M. & Papert, S. (199). *Perceptrons.* MIT Press.
