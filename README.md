@@ -34,8 +34,6 @@
 >><img width="455" height="251" alt="IMG 5848" src="https://github.com/user-attachments/assets/f0c49719-b95d-49a7-9f5c-0e367ecbbefb" />
 >>
 >> *Figure 1: The 'Pitches and Sketches' Diagram that I showed Paul*
-><img width="3965" height="4000" alt="Image from iLoveIMG" src="https://github.com/user-attachments/assets/e2e1312d-b6d1-4ec2-ae57-7d6117f7cfd0" />
-
 >///////////////my final perceptron taken a picture of? with the green light on
 
 ### How a Perceptron Relates to a Biological Neuron
@@ -137,14 +135,15 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 > The summed output from the TL074 feeds into the LM311 voltage comparator. The LM311 is a dedicated comparator IC — unlike a general-purpose op-amp, it is designed specifically for this job: it switches its output cleanly and quickly between HIGH and LOW based on which of its two inputs is larger. [^4]
 
 >The LM311 compares two voltages:
-> * V+ (non-inverting input) → $V_sum$ from the TL074 output
-> * V− (inverting input) → $V_ref$ = 4.5V (set by two equal 220Ω resistors forming a voltage divider from 9V to GND)
+> * V+ (non-inverting input) → $V_{sum}$ from the TL074 output
+> * V− (inverting input) → $V_{ref}$ = 4.5V (set by two equal 220Ω resistors forming a voltage divider from 9V to GND)
 > * When $V_{sum} > V_{ref}$: output goes HIGH → green LED lights (Class A — positive prediction)
 > * When $V_{sum} < V_{ref}$: output goes LOW → blue LED lights (Class B — negative prediction)
 >
 >><img width="326" height="288" alt="Comparator" src="https://github.com/user-attachments/assets/620b7981-2251-4dcc-87ab-538296a77551" /> <img width="326" height="288" alt="Quad Amp" src="https://github.com/user-attachments/assets/f356d67a-ae2e-4e36-b80b-3da94e92b48f" />
 >>
->>*Figure 10: The LM311 comparator on the breadboard* 
+>>*Figure 10: The LM311 comparator on the breadboard*
+>>
 >>*Figure 11: The TL074CN quad op-amp on the breadboard*
 >
 > #### Stage 5: Output $\overline{y}$
@@ -204,23 +203,23 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 > Before committing to the physical build, three full circuit simulations were developed in TinkerCad Circuits to validate the design and catch wiring errors before they became real problems. Tinkercad runs simulations, probe voltages, and flip switches in a virtual environment, which was invaluable for debugging a circuit this interconnected. It also made it much easier to work through the challenges I ran into because I could try a few different versions to get to the core problem.
 >
 > 
->> **Prototype 1:** Basic summing network (op-amp working). Validated that my three potentiometers wired to a shared row through equal resistors were in fact producing a voltage proportional to the weighted sum of the inputs. I struggled with summation here, and my nodes were not directly feeding into the LED.
+> **Prototype 1:** Basic summing network (op-amp working). Validated that my three potentiometers wired to a shared row through equal resistors were in fact producing a voltage proportional to the weighted sum of the inputs. I struggled with summation here, and my nodes were not directly feeding into the LED.
 >
 >><img width="516" height="191" alt="Version 1" src="https://github.com/user-attachments/assets/97497637-3591-4074-b67f-c8933e86ea4e" />
 >>
->>>*Figure 12: Prototype 1 in TinkerCad*
+>>*Figure 12: Prototype 1 in TinkerCad*
 >
->> **Prototype 2**: Single comparator with fixed threshold, including having a fully operational op-amp comparator stage with a fixed 4.5V Vref divider. Was able to confirm mutually exclusive LED behaviour, exactly one LED on at a time, cleanly switching as the summing node crossed the threshold. The problem was that my summation was subtracting from the row, never crossing the threshold.
+> **Prototype 2**: Single comparator with fixed threshold, including having a fully operational op-amp comparator stage with a fixed 4.5V Vref divider. Was able to confirm mutually exclusive LED behaviour, exactly one LED on at a time, cleanly switching as the summing node crossed the threshold. The problem was that my summation was subtracting from the row, never crossing the threshold.
 >
->>><img width="516" height="245" alt="Version 2" src="https://github.com/user-attachments/assets/ed90c3e4-3ded-4b1d-907d-e003ea585121" />
->>>
->>>*Figure 13: Prototype 2 in TinkerCad*
+>><img width="516" height="245" alt="Version 2" src="https://github.com/user-attachments/assets/ed90c3e4-3ded-4b1d-907d-e003ea585121" />
+>>
+>>*Figure 13: Prototype 2 in TinkerCad*
 >
->> **Prototype 3:** Full circuit with dual comparators and DIP switch inputs. Complete design: two-position DIP switch inputs with pull-down resistors, three pots (two for weights, one for bias), resistive summing network, dual TL074 comparator outputs, and both LEDs with current-limiting resistors. This is the final design that made me feel comfortable enough to transfer what I knew onto a physical breadboard.
+> **Prototype 3:** Full circuit with dual comparators and DIP switch inputs. Complete design: two-position DIP switch inputs with pull-down resistors, three pots (two for weights, one for bias), resistive summing network, dual TL074 comparator outputs, and both LEDs with current-limiting resistors. This is the final design that made me feel comfortable enough to transfer what I knew onto a physical breadboard.
 >
->>><img width="516" height="190" alt="Version 3" src="https://github.com/user-attachments/assets/ad3b7411-2258-4fe7-a3ff-86b5ab8297b4" />
->>>
->>>*Figure 14: Prototype 3 in TinkerCad*
+>><img width="516" height="190" alt="Version 3" src="https://github.com/user-attachments/assets/ad3b7411-2258-4fe7-a3ff-86b5ab8297b4" />
+>>
+>>*Figure 14: Prototype 3 in TinkerCad*
 >
 
 ### Reflections
