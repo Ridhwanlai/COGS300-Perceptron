@@ -135,14 +135,14 @@
 >The LM311 compares two voltages:
 > * V+ (non-inverting input) → $V_{sum}$ from the TL074 output
 > * V− (inverting input) → $V_{ref}$ = 4.5V (set by two equal 220Ω resistors forming a voltage divider from 9V to GND)
-> * When $V_{sum} > V_{ref}$: output goes HIGH → green LED lights (Class A — positive prediction)
+> 
+> When $V_{sum} > V_{ref}$: output goes HIGH → green LED lights (Class A — positive prediction)
 >>
 >><img width="458" height="283" alt="LED ON" src="https://github.com/user-attachments/assets/e76d3d95-46c5-48de-80bd-465c0ddff2c8" />
 >> 
 >> *Figure 10: My perceptron reading a HIGH output*
 >
-> * When $V_{sum} < V_{ref}$: output goes LOW → blue LED lights (Class B — negative prediction)
-> 
+> When $V_{sum} < V_{ref}$: output goes LOW → blue LED lights (Class B — negative prediction)
 >> 
 >><img width="456" height="281" alt="LED OFF" src="https://github.com/user-attachments/assets/eed9935a-06aa-4e03-857b-c6e81074fb5e" />
 >> 
