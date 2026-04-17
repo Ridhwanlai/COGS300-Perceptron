@@ -9,7 +9,7 @@
 2. [Perceptron Breakdown](#perceptron-breakdown)
     1. [What Is a Perceptron?](#what-is-a-perceptron)
     2. [Circuit Architecture — How My Physical Build Works](#circuit-architecture--how-my-physical-build-works)
-    3. [Processing Visualization](#processing-isualization)
+    3. [Processing Visualization](#processing-visualization)
     4. [Jupyter Notebook — Software Perceptron](#jupyter-notebook--software-perceptron)
     5. [Limitations — Why XOR is Impossible (for my Perceptron)](#limitations--why-xor-is-impossible-for-my-perceptron)
 
@@ -41,33 +41,34 @@
 >
 >The structure of a biological neuron directly inspires the perceptron.[^1] In the brain, a neuron receives signals through its dendrites, integrates them in the cell body (soma), and—if the total signal crosses a threshold—fires an electrical spike down the axon, across the synaptic cleft, to the dendrites of the next neuron.
 >
->| Biological Neuron                          | Analog Perceptron                          |
->| ------------------------------------------ | ------------------------------------------ |
->| Dendrites receiving signals                | DIP switch inputs $x₁,x₂$                  |
->| Synapse strength                           | Potentiometer dial position $(w₁,w₂)$      |
->| Axon hillock — summation + threshold check | Quad op-amp (summing node) + comparator    |
->| Action potential (fires or doesn't)        | LED lights (green = fires, blue = doesn't) |
->| Axon → next neuron                         | Output wire → next circuit stage           |
->| Synaptic plasticity (learning)             | Turning the potentiometer dials by hand    |
->
->*Figure 2: A table showing the comparison between a biological neuron and an analog perceptron*
+>>| Biological Neuron                          | Analog Perceptron                          |
+>>| ------------------------------------------ | ------------------------------------------ |
+>>| Dendrites receiving signals                | DIP switch inputs $(x_1, x_2)$             |
+>>| Synapse strength                           | Potentiometer dial position $(w_1, w_2)$   |
+>>| Axon hillock — summation + threshold check | Quad op-amp (summing node) + comparator    |
+>>| Action potential (fires or doesn't)        | LED lights (green = fires, blue = doesn't) |
+>>| Axon → next neuron                         | Output wire → next circuit stage           |
+>>| Synaptic plasticity (learning)             | Turning the potentiometer dials by hand    |
+>>
+>>*Figure 2: A table showing the comparison between a biological neuron and an analog perceptron*
 >
 >When multiple perceptrons are combined, with the output of one feeding the inputs of others, you get a multi-layer neural network, capable of solving problems no single perceptron can. This is the architecture shown in the upper-left part of my notebook sketch (the multi-layer diagram with attention mechanisms), and the direction I intended for this project. 
 >
-><img width="381" height="285" alt="Image from iLoveIMG" src="https://github.com/user-attachments/assets/e5e0793-2e38-409e-9bd8-0845f1fdf12" />
->
->*Figure 3: My perceptron prototype theory on paper*
+>><img width="381" height="285" alt="Image from iLoveIMG" src="https://github.com/user-attachments/assets/e5e0793-2e38-409e-9bd8-0845f1fdf12" />
+>>
+>>*Figure 3: My perceptron prototype theory on paper*
 >
 >My first iterations of this were on a cardboard box (as my base) with physical components I planned to use later (perceptron, switches, etc.). [Ridhwnalai's Works-like Prototype](https://drive.google.com/file/d/1gP8iWLKEKyuuV7yGvbxWcRd90X-XedA8/view)
 >
-><img width="387" height="354" alt="BIG IMAGE" src="https://github.com/user-attachments/assets/a0f5ca0f-d4e3-475-9257-ea23c33b1a83" />
+>><img width="387" height="354" alt="BIG IMAGE" src="https://github.com/user-attachments/assets/a0f5ca0f-d4e3-475-9257-ea23c33b1a83" />
+>>
+>>*Figure 4: My actual work-like perceptron paper prototype*
 >
->*Figure 4: My actual work-like perceptron paper prototype*
+>><img width="540" height="327" alt="Screenshot 2026-04-15 at 2 39 56 AM" src="https://github.com/user-attachments/assets/b2ca9573-be8e-407c-a2b5-5d4dc9c7fdf9" />
+>>
+>> *Figure 5: Image of my Piazza post sharing the math behind the first layer of my neural network*
+Now for the part you've been waiting for (drumroll, please)... Before that, though, thank you for following along so far. If some of this makes absolutely no sense, great! I was in your shoes a few months ago. :)
 >
-><img width="540" height="327" alt="Screenshot 2026-04-15 at 2 39 56 AM" src="https://github.com/user-attachments/assets/b2ca9573-be8e-407c-a2b5-5d4dc9c7fdf9" />
->
-> *Figure 5: Image of my Piazza post sharing the math behind the first layer of my neural network*
-Now for the part you've been waiting for (drumroll, please)... Before that, though, thank you for following along so far. If some of this makes absolutely no sense, great! I was in your shoes a few months ago. :) 
 
 ## Perceptron Breakdown
 
@@ -90,9 +91,9 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 > 
 > The perceptron is a binary linear classifier. Geometrically, the equation $(w_1x_1 + w_2x_2 + b) = 0$ defines a straight line in 2D space. Everything on one side of that line is Class A; everything on the other is Class B. Training the perceptron means adjusting $w₁, w₂,$ and $b$ until that line correctly separates all your training examples.[^2]
 >
-> <img width="422" height="295" alt="IMG 7031" src="https://github.com/user-attachments/assets/a6b6bc48-4719-4e00-bc62-1c03ac21fa3b" />
->
->*Figure 6: My perceptron diagram illustrating weighted inputs, summation, and activation function*
+>><img width="422" height="295" alt="IMG 7031" src="https://github.com/user-attachments/assets/a6b6bc48-4719-4e00-bc62-1c03ac21fa3b" />
+>>
+>>*Figure 6: My perceptron diagram illustrating weighted inputs, summation, and activation function*
 >
 
 ### Circuit Architecture — How My Physical Build Works
@@ -102,9 +103,9 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 > #### Stage 1: Inputs $(x_1, x_2)$
 > Two positions of a Dual In-line Package (DIP) switch act as binary inputs. When a switch is ON, it connects 9V to the corresponding weight potentiometer, representing input = 1. When OFF, a pull-down resistor holds the line firmly at 0V (representing input = <0). The pull-down is essential: without it, an open switch leaves the input floating at an undefined voltage, producing garbage readings.
 > 
-><img width="504" height="290" alt="INPUT" src="https://github.com/user-attachments/assets/b816b2dc-3579-4b48-a5a7-32207f8670ce" />
->
->*Figure 7: Inputs (dual in-line package) on the breadboard*
+>><img width="504" height="290" alt="INPUT" src="https://github.com/user-attachments/assets/b816b2dc-3579-4b48-a5a7-32207f8670ce" />
+>>
+>>*Figure 7: Inputs (dual in-line package) on the breadboard*
 >
 > #### Stage 2: Weights $(w_1, w_2, b)$
 > Three 3386MP trimmer potentiometers act as the learnable weights. Each pot is wired as a voltage divider:
@@ -114,20 +115,20 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 > 
 > Turning the knob clockwise increases the weight (more voltage passes through), and counterclockwise approaches zero. The third pot is always connected to 9V regardless of switch state; this is the bias term b, which shifts the decision boundary away from the origin.
 >
-><img width="544" height="329" alt="POTS" src="https://github.com/user-attachments/assets/51f4c01e-d0bb-41c3-8f6b-0ff73a2b245f" />
->
->*Figure 8: Weights (potentiometers) on the breadboard*
+>><img width="544" height="329" alt="POTS" src="https://github.com/user-attachments/assets/51f4c01e-d0bb-41c3-8f6b-0ff73a2b245f" />
+>>
+>>*Figure 8: Weights (potentiometers) on the breadboard*
 >
 > #### Stage 3: Summation Node $\sum$
 >The center (wiper) pins of all three pots connect through equal 220Ω series resistors into the inverting row input of one TL074CN quad op-amp (on the breadboard), which is wired as an inverting summing amplifier. With equal input resistors $(R)$ and a feedback resistor $(R_f)$, the output is: $V_{sum} = -\frac{R_f}{R}(w_1x_1 + w_2x_2 + b)$
 >
 >The output is inverted, which is accounted for in the comparator stage. Unlike passive resistive summing (where voltages interact and load each other), the op-amp actively buffers the result, giving a clean, accurate weighted $V_sum$ regardless of what the LEDs or downstream circuitry are doing. This is the key advantage of using the TL074 here rather than relying on passive summing alone.
 >
-><img width="504" height="273" alt="SUMMM" src="https://github.com/user-attachments/assets/eb7c71be-2a5c-4189-a583-492c19a332c6" />
+>><img width="504" height="273" alt="SUMMM" src="https://github.com/user-attachments/assets/eb7c71be-2a5c-4189-a583-492c19a332c6" />
+>>
+>>*Figure 9: Summation row with resistors on the breadboard*
 >
->*Figure 9: Summation row with resistors on the breadboard*
->
-> There are two possible ways to get a reading of this sum. The first is by using a multimeter as the output reader. This is what I initially planned to do. Set it to DC Volts. Red probe on the summing row, black probe on GND. The voltage you read is $ŷ$. Above 4.5V = positive prediction. Below 4.5V = either a zero or a negative prediction. The second—and what I ended up building—is a Processing UI that reads the Arduino's analog measurement of this output voltage and visualizes the summation in real time as you turn the knobs. [See Processing Visualization](#processing-visualization)
+> There are two possible ways to get a reading of this sum. The first is by using a multimeter as the output reader. This is what I initially planned to do. Set it to DC Volts. Red probe on the summing row, black probe on GND. The voltage you read is $\overline{y}$. Above 4.5V = positive prediction. Below 4.5V = either a zero or a negative prediction. The second—and what I ended up building—is a Processing UI that reads the Arduino's analog measurement of this output voltage and visualizes the summation in real time as you turn the knobs. [See Processing Visualization](#processing-visualization)
 >
 >>> //*add screenshot of processing image of this working*
 >
@@ -140,12 +141,13 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 > * When $V_sum > V_ref$: output goes HIGH → green LED lights (Class A — positive prediction)
 > * When $V_sum < V_ref$: output goes LOW → blue LED lights (Class B — negative prediction)
 >
-> (<img width="326" height="288" alt="Comparator" src="https://github.com/user-attachments/assets/620b7981-2251-4dcc-87ab-538296a77551" />)(<img width="326" height="288" alt="Quad Amp" src="https://github.com/user-attachments/assets/f356d67a-ae2e-4e36-b80b-3da94e92b48f" />)
-> 
->*Figure 10: The TL074CN quad op-amp on the breadboard               Figure 11: The LM311 comparator on the breadboard*
+>><img width="326" height="288" alt="Quad Amp" src="https://github.com/user-attachments/assets/f356d67a-ae2e-4e36-b80b-3da94e92b48f" />  <img width="326" height="288" alt="Comparator" src="https://github.com/user-attachments/assets/620b7981-2251-4dcc-87ab-538296a77551" />
+>>
+>>*Figure 10: The TL074CN quad op-amp on the breadboard*
+>>*Figure 11: The LM311 comparator on the breadboard* 
 >
 > #### Stage 5: Output $\overline{y}$
-> Each LM311 output state drives one LED through a 220Ω current-limiting resistor (without this, the LED draws far too much current and burns out immediately — approximately $(9V − 2V) / 220Ω ≈ 32mA$, safely within the LED's rated range).
+> Each LM311 output state drives one LED through a 220Ω current-limiting resistor (without this, the LED draws far too much current and burns out immediately — approximately ${(9V − 2V)/220Ω} ≈ 32mA$, safely within the LED's rated range).
 
 ### Processing Visualization
 >
@@ -163,7 +165,8 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 > * LED indicators mirroring the physical LEDs, so the audience can see the binary output clearly on-screen
 > * The current values of $(w_1x_1 + w_2x_2)$ and $b$ displayed numerically as the knobs are adjusted
 >   
-> **Voltage safety note* if you're interested in replicating: The Arduino's analog inputs operate at 5V maximum. The op-amp summing output (0–9V) was stepped down via a 2:1 voltage divider (two equal resistors) before entering the analog pin. This prevents damage to the Arduino.*
+>> **Voltage safety note* if you're interested in replicating: The Arduino's analog inputs operate at 5V maximum. The op-amp summing output (0–9V) was stepped down via a 2:1 voltage divider (two equal resistors) before entering the analog pin. This prevents damage to the Arduino.*
+>
 
 ### Jupyter Notebook — Software Perceptron
 >
@@ -179,17 +182,19 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 >
 > The fundamental limitation of a single-layer perceptron is that it can only solve linearly separable problems; problems where a single straight line can divide Class A from Class B. The XOR problem is the canonical example of a problem that is not linearly separable:
 >
->| $x₁$ | $x₂$ | XOR output |
->| ---- | ---- | ---------- |
->| 0    | 0    | 0          |
->| 0    | 1    | 1          |
->| 1    | 0    | 1          |
->| 1    | 1    | 0          |
+>>| $x_1$| $x_2$| XOR output |
+>>| ---- | ---- | ---------- |
+>>| 0    | 0    | 0          |
+>>| 0    | 1    | 1          |
+>>| 1    | 0    | 1          |
+>>| 1    | 1    | 0          |
+>>
+>> *Figure 13: A table showing the output of an XOR* 
 >
 > No single straight line can separate the 1 outputs from the 0 outputs, as they form an alternating checkerboard pattern. This is why XOR was the problem that broke the first perceptron hype cycle in the 1960s.[^6]
 >
 > The solution is multiple layers (the multi-layer perceptron (MLP) shown in the upper-right of my original notebook sketch; figure 3). With a hidden layer, the network can learn non-linear boundaries by combining multiple linear decisions. This is the architecture behind every modern deep learning model, and the direction this project is intended to grow. My goal is to ensure my 'hidden layer' remains interpretable, and understanding the concepts in this project has gone a long way toward achieving that.
-
+>
 
 ## Conclusion
 
@@ -200,21 +205,21 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 > 
 >> Prototype 1: Basic summing network (op-amp working) Validated that my three potentiometers wired to a shared row through equal resistors were in fact producing a voltage proportional to the weighted sum of the inputs. I struggled with summation here, and my nodes were not directly feeding into the LED.
 >
-><img width="516" height="191" alt="Version 1" src="https://github.com/user-attachments/assets/97497637-3591-4074-b67f-c8933e86ea4e" />
->
->*Figure 12: Prototype 1 in TinkerCad*
+>>><img width="516" height="191" alt="Version 1" src="https://github.com/user-attachments/assets/97497637-3591-4074-b67f-c8933e86ea4e" />
+>>>
+>>>*Figure 12: Prototype 1 in TinkerCad*
 >
 >> Prototype 2: Single comparator with fixed threshold, including having a fully operational op-amp comparator stage with a fixed 4.5V Vref divider. Was able to confirm mutually exclusive LED behaviour, exactly one LED on at a time, cleanly switching as the summing node crossed the threshold. The problem was that my summation was subtracting from the row, never crossing the threshold.
 >
-><img width="516" height="245" alt="Version 2" src="https://github.com/user-attachments/assets/ed90c3e4-3ded-4b1d-907d-e003ea585121" />
->
->*Figure 13: Prototype 2 in TinkerCad*
+>>><img width="516" height="245" alt="Version 2" src="https://github.com/user-attachments/assets/ed90c3e4-3ded-4b1d-907d-e003ea585121" />
+>>>
+>>>*Figure 13: Prototype 2 in TinkerCad*
 >
 >> Prototype 3: Full circuit with dual comparators and DIP switch inputs. Complete design: two-position DIP switch inputs with pull-down resistors, three pots (two for weights, one for bias), resistive summing network, dual TL074 comparator outputs, and both LEDs with current-limiting resistors. This is the final design that made me feel comfortable enough to transfer what I knew onto a physical breadboard.
 >
-><img width="516" height="190" alt="Version 3" src="https://github.com/user-attachments/assets/ad3b7411-2258-4fe7-a3ff-86b5ab8297b4" />
->
->*Figure 14: Prototype 3 in TinkerCad*
+>>><img width="516" height="190" alt="Version 3" src="https://github.com/user-attachments/assets/ad3b7411-2258-4fe7-a3ff-86b5ab8297b4" />
+>>>
+>>>*Figure 14: Prototype 3 in TinkerCad*
 >
 
 ### Reflections
@@ -232,4 +237,4 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 > [^3]: [ethicalPap — Machine Learning 101, Lecture 2: Perceptron Algorithm](https://www.youtube.com/watch?v=ziDrxd_JTvs)
 > [^4]: [Texas Instruments — LM311 Datasheet]([https://media.digikey.com/pdf/Data%20Sheets/Rohm%20PDFs/BA10324A_AF_AFV.pdf](https://www.ti.com/product/LM311?ds_k=LM311+Datasheet&DCM=yes&gad_campaignid=14388345080&gbraid=0AAAAAC08F2oICd-7U2a7-dLEgwnclq0))
 > [^5]: [Texas Instruments — TL074 Datasheet](https://www.ti.com/product/TL074)
-> [^]: Minsky, M. & Papert, S. (199). *Perceptrons.* MIT Press.
+> [^6]: Minsky, M. & Papert, S. (199). *Perceptrons.* MIT Press.
