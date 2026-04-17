@@ -36,38 +36,43 @@ const int PIN_X2   = 4;
 const int PIN_W1   = A0;
 const int PIN_W2   = A1;
 const int PIN_BIAS = A2;
-const int PIN_SUM  = A3;  // TL074 output (through voltage divider)
 
 void setup() {
   Serial.begin(9600);
-  pinMode(PIN_X1, INPUT);
-  pinMode(PIN_X2, INPUT);
+
+  // CRITICAL FIX: If you use INPUT, the pins float and read random noise.
+  // INPUT_PULLDOWN forces them to 0V when the switch is OFF.
+  pinMode(PIN_X1, INPUT_PULLDOWN);
+  pinMode(PIN_X2, INPUT_PULLDOWN);
+
   Serial.println("PERCEPTRON_READY");
 }
 
 void loop() {
-  int x1   = digitalRead(PIN_X1);
-  int x2   = digitalRead(PIN_X2);
+  int x1 = digitalRead(PIN_X1);
+  int x2 = digitalRead(PIN_X2);
+
   float w1   = analogRead(PIN_W1)   / 1023.0;
   float w2   = analogRead(PIN_W2)   / 1023.0;
   float bias = analogRead(PIN_BIAS) / 1023.0;
 
-  // TL074 output, scaled 0–4.5V → 0.0–1.0
-  // (voltage divider already brought it into safe range)
-  float sumV = analogRead(PIN_SUM) / 1023.0;
+  // True perceptron math
+float sigma = (w1 * x1 + w2 * x2 + bias);
 
-  // TL074 is inverting: LOW output means the weighted sum
-  // exceeded the threshold. Adjust 0.40 if needed.
-  int fired = (sumV < 0.40) ? 1 : 0;
+// Normalize to 0–1 range (since max possible = 3)
+sigma = sigma / 3.0;
 
-  // CSV format: x1,x2,w1,w2,bias,sumV,fired
-  Serial.print(x1);       Serial.print(",");
-  Serial.print(x2);       Serial.print(",");
-  Serial.print(w1, 3);    Serial.print(",");
-  Serial.print(w2, 3);    Serial.print(",");
-  Serial.print(bias, 3);  Serial.print(",");
-  Serial.print(sumV, 3);  Serial.print(",");
+// Threshold at 0.45
+int fired = (sigma > 0.45) ? 1 : 0;
+
+  // CSV format: x1,x2,w1,w2,bias,sigma,fired
+  Serial.print(x1);        Serial.print(",");
+  Serial.print(x2);        Serial.print(",");
+  Serial.print(w1, 3);     Serial.print(",");
+  Serial.print(w2, 3);     Serial.print(",");
+  Serial.print(bias, 3);   Serial.print(",");
+  Serial.print(sigma, 3);  Serial.print(",");
   Serial.println(fired);
 
-  delay(100);  // 10 readings per second
+  delay(100);  
 }
