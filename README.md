@@ -17,7 +17,7 @@
     1. [Challenges - Explained through TinkerCad Prototypes](#challenges)
     2. [Reflections](#reflections)
     3. [References & Citations](#references--citations)
-
+<mark>Highlighted Text</mark>
 
 ## Introduction and Background
 
