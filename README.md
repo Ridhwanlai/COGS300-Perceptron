@@ -62,7 +62,7 @@
 >>
 >>*Figure 4: My actual work-like perceptron paper prototype*
 >
->><img width="540" height="327" alt="Screenshot 2026-04-15 at 2 39 56 AM" src="https://github.com/user-attachments/assets/b2ca9573-be8e-407c-a2b5-5d4dc9c7fdf9" />
+>><img width="540" height="327" alt="piazza posttt" src="https://github.com/user-attachments/assets/3e4f2ad8-7667-46a9-b0fa-e3b9b52f1406" />
 >>
 >> *Figure 5: Image of my Piazza post sharing the math behind the first layer of my neural network*
 >
