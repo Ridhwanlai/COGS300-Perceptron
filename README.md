@@ -32,8 +32,10 @@
 >This project emerged from a sketch I showed my professor: a biological neuron I had drawn by hand, and the words "this is what I want to build." That vision evolved into a perceptron, and after many late nights and numerous hours of fine-tuning, re-understanding concepts, and crashing out (every once in a while), here we are. Thank you, Paul, for guiding me in the right direction and for being there to troubleshoot. It's moments like these that remind me of the value of an education!
 >>
 >><img width="455" height="251" alt="IMG 5848" src="https://github.com/user-attachments/assets/f0c49719-b95d-49a7-9f5c-0e367ecbbefb" />
->>*Figure 1: The 'Pitches and Sketches' Diagram that I showed Paul*
->
+>>
+>> *Figure 1: The 'Pitches and Sketches' Diagram that I showed Paul*
+><img width="3965" height="4000" alt="Image from iLoveIMG" src="https://github.com/user-attachments/assets/e2e1312d-b6d1-4ec2-ae57-7d6117f7cfd0" />
+
 >///////////////my final perceptron taken a picture of? with the green light on
 
 ### How a Perceptron Relates to a Biological Neuron
@@ -53,13 +55,13 @@
 >
 >When multiple perceptrons are combined, with the output of one feeding the inputs of others, you get a multi-layer neural network, capable of solving problems no single perceptron can. This is the architecture shown in the upper-left part of my notebook sketch (the multi-layer diagram with attention mechanisms), and the direction I intended for this project. 
 >
->><img width="381" height="285" alt="Image from iLoveIMG" src="https://github.com/user-attachments/assets/e5e0793-2e38-409e-9bd8-0845f1fdf12" />
+>><img width="360" height="364" alt="Image from iLoveIMG" src="https://github.com/user-attachments/assets/263080ed-3014-4e39-acbf-7350bb65891e" />
 >>
 >>*Figure 3: My perceptron prototype theory on paper*
 >
 >My first iterations of this were on a cardboard box (as my base) with physical components I planned to use later (perceptron, switches, etc.). [Ridhwnalai's Works-like Prototype](https://drive.google.com/file/d/1gP8iWLKEKyuuV7yGvbxWcRd90X-XedA8/view)
 >
->><img width="387" height="354" alt="BIG IMAGE" src="https://github.com/user-attachments/assets/a0f5ca0f-d4e3-475-9257-ea23c33b1a83" />
+>><img width="387" height="354" alt="BIG IMAGE" src="https://github.com/user-attachments/assets/a9f11f79-e6c6-4353-b978-5eafb5f90d64" />
 >>
 >>*Figure 4: My actual work-like perceptron paper prototype*
 >
@@ -88,7 +90,7 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 > * $b$ is the bias (a constant offset that shifts the decision boundary)
 > * $\sum_{i=1}^{n} ()$ is the activation function - positive sum → Class A, a zero, or negative sum → Class B
 > 
-> The perceptron is a binary linear classifier. Geometrically, the equation $(w_1x_1 + w_2x_2 + b) = 0$ defines a straight line in 2D space. Everything on one side of that line is Class A; everything on the other is Class B. Training the perceptron means adjusting $w₁, w₂,$ and $b$ until that line correctly separates all your training examples.[^2]
+> The perceptron is a binary linear classifier. Geometrically, the equation $(w_1x_1 + w_2x_2 + b) = 0$ defines a straight line in 2D space. Everything on one side of that line is Class A; everything on the other is Class B. Training the perceptron means adjusting $w_1, w_2,$ and $b$ until that line correctly separates all your training examples.[^2]
 >
 >><img width="422" height="295" alt="IMG 7031" src="https://github.com/user-attachments/assets/a6b6bc48-4719-4e00-bc62-1c03ac21fa3b" />
 >>
@@ -112,7 +114,7 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 > * Right pin → GND
 > * Center pin (wiper) → outputs a voltage proportional to how far the knob is turned
 > 
-> Turning the knob clockwise increases the weight (more voltage passes through), and counterclockwise approaches zero. The third pot is always connected to 9V regardless of switch state; this is the bias term b, which shifts the decision boundary away from the origin.
+> Turning the knob clockwise increases the weight (more voltage passes through), and counterclockwise approaches zero. The third pot is always connected to 9V regardless of switch state; this is the bias term $b$, which shifts the decision boundary away from the origin.
 >
 >><img width="544" height="329" alt="POTS" src="https://github.com/user-attachments/assets/51f4c01e-d0bb-41c3-8f6b-0ff73a2b245f" />
 >>
@@ -121,7 +123,7 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 > #### Stage 3: Summation Node $\sum$
 >The center (wiper) pins of all three pots connect through equal 220Ω series resistors into the inverting row input of one TL074CN quad op-amp (on the breadboard), which is wired as an inverting summing amplifier. With equal input resistors $(R)$ and a feedback resistor $(R_f)$, the output is: $V_{sum} = -\frac{R_f}{R}(w_1x_1 + w_2x_2 + b)$
 >
->The output is inverted, which is accounted for in the comparator stage. Unlike passive resistive summing (where voltages interact and load each other), the op-amp actively buffers the result, giving a clean, accurate weighted $V_sum$ regardless of what the LEDs or downstream circuitry are doing. This is the key advantage of using the TL074 here rather than relying on passive summing alone.
+>The output is inverted, which is accounted for in the comparator stage. Unlike passive resistive summing (where voltages interact and load each other), the op-amp actively buffers the result, giving a clean, accurate weighted $V_{sum}$ regardless of what the LEDs or downstream circuitry are doing. This is the key advantage of using the TL074 here rather than relying on passive summing alone.
 >
 >><img width="504" height="273" alt="SUMMM" src="https://github.com/user-attachments/assets/eb7c71be-2a5c-4189-a583-492c19a332c6" />
 >>
@@ -137,13 +139,13 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 >The LM311 compares two voltages:
 > * V+ (non-inverting input) → $V_sum$ from the TL074 output
 > * V− (inverting input) → $V_ref$ = 4.5V (set by two equal 220Ω resistors forming a voltage divider from 9V to GND)
-> * When $V_sum > V_ref$: output goes HIGH → green LED lights (Class A — positive prediction)
-> * When $V_sum < V_ref$: output goes LOW → blue LED lights (Class B — negative prediction)
+> * When $V_{sum} > V_{ref}$: output goes HIGH → green LED lights (Class A — positive prediction)
+> * When $V_{sum} < V_{ref}$: output goes LOW → blue LED lights (Class B — negative prediction)
 >
->><img width="326" height="288" alt="Quad Amp" src="https://github.com/user-attachments/assets/f356d67a-ae2e-4e36-b80b-3da94e92b48f" />  <img width="326" height="288" alt="Comparator" src="https://github.com/user-attachments/assets/620b7981-2251-4dcc-87ab-538296a77551" />
+>><img width="326" height="288" alt="Comparator" src="https://github.com/user-attachments/assets/620b7981-2251-4dcc-87ab-538296a77551" /> <img width="326" height="288" alt="Quad Amp" src="https://github.com/user-attachments/assets/f356d67a-ae2e-4e36-b80b-3da94e92b48f" />
 >>
->>*Figure 10: The TL074CN quad op-amp on the breadboard*
->>*Figure 11: The LM311 comparator on the breadboard* 
+>>*Figure 10: The LM311 comparator on the breadboard* 
+>>*Figure 11: The TL074CN quad op-amp on the breadboard*
 >
 > #### Stage 5: Output $\overline{y}$
 > Each LM311 output state drives one LED through a 220Ω current-limiting resistor (without this, the LED draws far too much current and burns out immediately — approximately ${(9V − 2V)/220Ω} ≈ 32mA$, safely within the LED's rated range).
@@ -164,7 +166,7 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 > * LED indicators mirroring the physical LEDs, so the audience can see the binary output clearly on-screen
 > * The current values of $(w_1x_1 + w_2x_2)$ and $b$ displayed numerically as the knobs are adjusted
 >   
->> **Voltage safety note* if you're interested in replicating: The Arduino's analog inputs operate at 5V maximum. The op-amp summing output (0–9V) was stepped down via a 2:1 voltage divider (two equal resistors) before entering the analog pin. This prevents damage to the Arduino.*
+>> ***Voltage safety note** if you're interested in replicating: The Arduino's analog inputs operate at 5V maximum. The op-amp summing output (0–9V) was stepped down via a 2:1 voltage divider (two equal resistors) before entering the analog pin. This prevents damage to the Arduino.*
 >
 
 ### Jupyter Notebook — Software Perceptron
@@ -202,19 +204,19 @@ Now for the part you've been waiting for (drumroll, please)... Before that, thou
 > Before committing to the physical build, three full circuit simulations were developed in TinkerCad Circuits to validate the design and catch wiring errors before they became real problems. Tinkercad runs simulations, probe voltages, and flip switches in a virtual environment, which was invaluable for debugging a circuit this interconnected. It also made it much easier to work through the challenges I ran into because I could try a few different versions to get to the core problem.
 >
 > 
->> Prototype 1: Basic summing network (op-amp working) Validated that my three potentiometers wired to a shared row through equal resistors were in fact producing a voltage proportional to the weighted sum of the inputs. I struggled with summation here, and my nodes were not directly feeding into the LED.
+>> **Prototype 1:** Basic summing network (op-amp working). Validated that my three potentiometers wired to a shared row through equal resistors were in fact producing a voltage proportional to the weighted sum of the inputs. I struggled with summation here, and my nodes were not directly feeding into the LED.
 >
->>><img width="516" height="191" alt="Version 1" src="https://github.com/user-attachments/assets/97497637-3591-4074-b67f-c8933e86ea4e" />
->>>
+>><img width="516" height="191" alt="Version 1" src="https://github.com/user-attachments/assets/97497637-3591-4074-b67f-c8933e86ea4e" />
+>>
 >>>*Figure 12: Prototype 1 in TinkerCad*
 >
->> Prototype 2: Single comparator with fixed threshold, including having a fully operational op-amp comparator stage with a fixed 4.5V Vref divider. Was able to confirm mutually exclusive LED behaviour, exactly one LED on at a time, cleanly switching as the summing node crossed the threshold. The problem was that my summation was subtracting from the row, never crossing the threshold.
+>> **Prototype 2**: Single comparator with fixed threshold, including having a fully operational op-amp comparator stage with a fixed 4.5V Vref divider. Was able to confirm mutually exclusive LED behaviour, exactly one LED on at a time, cleanly switching as the summing node crossed the threshold. The problem was that my summation was subtracting from the row, never crossing the threshold.
 >
 >>><img width="516" height="245" alt="Version 2" src="https://github.com/user-attachments/assets/ed90c3e4-3ded-4b1d-907d-e003ea585121" />
 >>>
 >>>*Figure 13: Prototype 2 in TinkerCad*
 >
->> Prototype 3: Full circuit with dual comparators and DIP switch inputs. Complete design: two-position DIP switch inputs with pull-down resistors, three pots (two for weights, one for bias), resistive summing network, dual TL074 comparator outputs, and both LEDs with current-limiting resistors. This is the final design that made me feel comfortable enough to transfer what I knew onto a physical breadboard.
+>> **Prototype 3:** Full circuit with dual comparators and DIP switch inputs. Complete design: two-position DIP switch inputs with pull-down resistors, three pots (two for weights, one for bias), resistive summing network, dual TL074 comparator outputs, and both LEDs with current-limiting resistors. This is the final design that made me feel comfortable enough to transfer what I knew onto a physical breadboard.
 >
 >>><img width="516" height="190" alt="Version 3" src="https://github.com/user-attachments/assets/ad3b7411-2258-4fe7-a3ff-86b5ab8297b4" />
 >>>
