@@ -7,27 +7,18 @@
     2. [How a Perceptron Relates to a Biological Neuron](#how-a-perceptron-relates-to-a-biological-neuron)
 
 2. [Perceptron Breakdown](#perceptron-breakdown)
-    2a. [What Is a Perceptron?](#what-is-a-perceptron)
-    2b. [Circuit Architecture — How my Physical Build Works](#circuit-architecture--how-my-physical-build-works)
-    2c. [Processing Visualization]
-    2d. [Jupyter Notebook — Software Perceptron](#jupyter-notebook--software-perceptron)
-    2e. [Limitations — Why XOR is Impossible (for my Perceptron)](#limitations--why-xor-is-impossible-for-my-perceptron)
+    1. [What Is a Perceptron?](#what-is-a-perceptron)
+    2. [Circuit Architecture — How my Physical Build Works](#circuit-architecture--how-my-physical-build-works)
+    3. [Processing Visualization]
+    4. [Jupyter Notebook — Software Perceptron](#jupyter-notebook--software-perceptron)
+    5. [Limitations — Why XOR is Impossible (for my Perceptron)](#limitations--why-xor-is-impossible-for-my-perceptron)
 
 3. [Conclusion](#conclusion)
-    3a. [Challenges - Explained through TinkerCad Prototypes](#challenges)
-    3b. [Reflections](#reflections)
-    3c. [References & Citations](#references--citations)
+    1. [Challenges - Explained through TinkerCad Prototypes](#challenges)
+    2. [Reflections](#reflections)
+    3. [References & Citations](#references--citations)
 
 
-1. First main item
-    1. First nested item
-    2. Second nested item
-2. Second main item
-    1. Sub-item A
-    2. Sub-item B
-   
-
-   
 ## Introduction and Background
 
 ### Why I Built This
