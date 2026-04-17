@@ -62,8 +62,8 @@ Conclusion
 >
 >| Biological Neuron                          | Analog Perceptron                          |
 >| ------------------------------------------ | ------------------------------------------ |
->| Dendrites receiving signals                | DIP switch inputs $x₁$, $x₂$               |
->| Synapse strength                           | Potentiometer dial position $(w₁$,$w₂)$    |
+>| Dendrites receiving signals                | DIP switch inputs $x₁,x₂$               |
+>| Synapse strength                           | Potentiometer dial position $(w₁,w₂)$    |
 >| Axon hillock — summation + threshold check | TL074 op-amp summing node + comparator     |
 >| Action potential (fires or doesn't)        | LED lights (green = fires, blue = doesn't) |
 >| Axon → next neuron                         | Output wire → next circuit stage           |
